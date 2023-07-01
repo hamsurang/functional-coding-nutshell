@@ -1,8 +1,6 @@
 # 쏙쏙쑥쑥 스터디
 
-<div style="display: flex; justify-contents: center">
 <img src="./assets/logo.png" width="250px" />
-</div>
 
 ## 🤔 어떤 스터디인가요?
 
