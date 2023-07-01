@@ -2,14 +2,14 @@
 
 <img src="./assets/logo.png" width="250px" />
 
-# 🤔 어떤 스터디인가요?
+## 🤔 어떤 스터디인가요?
 
 [함수랑 산악회](https://github.com/function-and-mountain)의 첫번째 등정, 함수형 프로그래밍의 순한 맛 버전의 책인 `쏙쏙 들어오는 함수형 코딩`을 기반으로한 북 스터디
 
-📌 **[스터디 신청하기](https://docs.google.com/forms/d/e/1FAIpQLSe4KkkOPD6e_Hs7oXabNnYHRBZWYfynbrPQGLVwkHDy4Nz6Vg/viewform)**
-
-스터디 모집: 7월 3일 ~ 7월 10일
-결과 전달: 7월 11일 (화) 중 개별 안내
+```
+📌 스터디 모집: 7월 3일 ~ 7월 10일
+   결과 전달: 7월 11일 (화) 중 개별 안내
+```
 
 ### 스터디 기획 멤버
 
@@ -81,9 +81,3 @@
 이 외에 참가를 망설이거나, 추가로 궁금하신 사항이 있다면 [**오픈채팅**](https://open.kakao.com/o/sTjHAUsf)을 통해 편하게 문의해주세요!
 
 [함수랑 산악회](https://open.kakao.com/o/sTjHAUsf)
-
-## 📌 쏙쏙쑥쑥 지원하기
-
-구글폼으로 쉽게 지원이 가능해요!
-
-[쏙쏙쑥쑥 스터디 지원서](https://forms.gle/p4YbxYBi8whvhsTD8)
