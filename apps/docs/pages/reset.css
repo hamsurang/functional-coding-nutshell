@@ -1,0 +1,12 @@
+.nextra-scrollbar {
+  scrollbar-gutter: unset !important;
+}
+
+table {
+  font-size: 12px;
+}
+
+td,
+th {
+  text-align: start !important;
+}

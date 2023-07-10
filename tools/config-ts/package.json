@@ -1,0 +1,17 @@
+{
+  "name": "@nutshell/ts-config",
+  "version": "0.1.0",
+  "private": true,
+  "files": [
+    "base.json",
+    "nextjs.json",
+    "node16.json",
+    "react-library.json"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "echo hi"
+  }
+}

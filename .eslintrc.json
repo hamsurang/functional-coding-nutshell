@@ -1,0 +1,74 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "unused-imports", "react-hooks", "prettier"],
+  "extends": [
+    "airbnb",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@next/next/recommended",
+    "prettier"
+  ],
+  "ignorePatterns": [
+    "**/build/**/*.*",
+    ".yarn/**/*",
+    "node_modules",
+    ".pnp.*",
+    ".yarnrc.yml",
+    "yarn.lock"
+  ],
+  "rules": {
+    "quote-props": "warn",
+    "@typescript-eslint/consistent-type-imports": "error",
+    "@typescript-eslint/no-empty-function": 0,
+    "react/button-has-type": 0,
+    "jsx-a11y/media-has-caption": 0,
+    "import/prefer-default-export": 0, // 0 -> 0ff / 1 -> on (default)
+    "prettier/prettier": 0,
+    "no-alert": 0,
+    "import/extensions": 0,
+    "consistent-return": 1,
+    "no-use-before-define": 0,
+    "import/no-unresolved": 0,
+    "import/no-extraneous-dependencies": 0, // 테스트 또는 개발환경을 구성하는 파일에서는 devDependency 사용을 허용
+    "no-shadow": 0,
+    "react/prop-types": 0,
+    "react/require-default-props": "off",
+    "react/react-in-jsx-scope": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    // redux-toolkit docs https://redux-toolkit.js.org/usage/immer-reducers#linting-state-mutations
+    "no-param-reassign": [
+      "error",
+      { "props": true, "ignorePropertyModificationsFor": ["state", "ctx"] }
+    ],
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "react/function-component-definition": 0,
+    "react/destructuring-assignment": 0,
+    "@typescript-eslint/prefer-namespace-keyword": 0,
+    "jsx-a11y/anchor-is-valid": [
+      // nextjs 에서 a tag 에 href 를 기대하는 이슈로 인해
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["hrefLeft", "hrefRight"],
+        "aspects": ["invalidHref", "preferButton"]
+      }
+    ],
+    "no-underscore-dangle": 0,
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error",
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }]
+  }
+}

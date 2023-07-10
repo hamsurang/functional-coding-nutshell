@@ -1,0 +1,11 @@
+node_modules/
+.vscode/
+.next/
+.swc/
+
+.yarn/**/*
+
+.DS_Store
+
+.pnp.cjs
+.pnp.loader.mjs

@@ -1,0 +1,13 @@
+{
+  "index": "README",
+
+  "---": {
+    "type": "separator"
+  },
+
+  "about-link": {
+    "title": "Go to Notion ↗",
+    "href": "https://minsooweb.notion.site/a6f94677860c462399db96f34e121c70?pvs=4",
+    "newWindow": true
+  }
+}
