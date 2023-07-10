@@ -1,6 +1,6 @@
 # 쏙쏙쑥쑥 스터디
 
-<img src="./assets/logo.png" width="250px" />
+<img src="./.github/logo.png" width="250px" />
 
 ## 🤔 어떤 스터디인가요?
 
