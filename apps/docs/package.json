@@ -19,7 +19,6 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@nutshell/ts-config": "workspace:^",
     "eslint": "8.43.0",
     "next-compose-plugins": "^2.2.1",
     "supports-color": "^9.4.0",
