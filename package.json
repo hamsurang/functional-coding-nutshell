@@ -1,6 +1,7 @@
 {
   "name": "functional-coding-nutshell",
   "version": "1.0.0",
+  "private": "true",
   "main": "index.js",
   "repository": "https://github.com/function-and-mountain/functional-coding-nutshell",
   "author": "minsoo kim <zlemzlem5656@naver.com>",
