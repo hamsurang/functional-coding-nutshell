@@ -713,7 +713,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@nutshell/ts-config@workspace:^, @nutshell/ts-config@workspace:tools/config-ts":
+"@nutshell/ts-config@workspace:tools/config-ts":
   version: 0.0.0-use.local
   resolution: "@nutshell/ts-config@workspace:tools/config-ts"
   languageName: unknown
@@ -2489,7 +2489,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "docs@workspace:apps/docs"
   dependencies:
-    "@nutshell/ts-config": "workspace:^"
     "@types/node": 20.3.1
     "@types/react": 18.2.13
     "@types/react-dom": 18.2.6
