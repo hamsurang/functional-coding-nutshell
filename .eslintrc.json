@@ -1,15 +1,14 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "unused-imports", "react-hooks", "prettier"],
+  "plugins": ["@typescript-eslint", "unused-imports", "react-hooks"],
   "extends": [
     "airbnb",
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:@next/next/recommended",
-    "prettier"
+    "plugin:@next/next/recommended"
   ],
   "ignorePatterns": [
     "**/build/**/*.*",

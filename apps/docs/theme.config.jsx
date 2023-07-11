@@ -4,8 +4,14 @@ export default {
   project: {
     link: "https://github.com/function-and-mountain/functional-coding-nutshell",
   },
-  docsRepositoryBase: "https://github.com/function-and-mountain/functional-coding-nutshell/tree/main/apps/docs",
+  docsRepositoryBase:
+    "https://github.com/function-and-mountain/functional-coding-nutshell/tree/main/apps/docs",
   sidebar: {
     toggleButton: true,
+  },
+  useNextSeoProps() {
+    return {
+      titleTemplate: "%s – 쏙쏙쑥쑥",
+    };
   },
 };
