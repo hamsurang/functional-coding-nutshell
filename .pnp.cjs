@@ -3133,6 +3133,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./apps/docs/",\
           "packageDependencies": [\
             ["docs", "workspace:apps/docs"],\
+            ["@nutshell/ts-config", "workspace:tools/config-ts"],\
             ["@types/node", "npm:20.3.1"],\
             ["@types/react", "npm:18.2.13"],\
             ["@types/react-dom", "npm:18.2.6"],\

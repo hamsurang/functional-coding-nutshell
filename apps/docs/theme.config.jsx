@@ -14,4 +14,20 @@ export default {
       titleTemplate: "%s – 쏙쏙쑥쑥",
     };
   },
+  footer: {
+    text: () => {
+      return (
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <span>© 함수랑 산악회</span>
+          <a
+            style={{ color: "#009972", textDecoration: "underline" }}
+            href="https://open.kakao.com/o/sTjHAUsf"
+            target="_blank"
+          >
+            <span>Contact Us</span>
+          </a>
+        </div>
+      );
+    },
+  },
 };

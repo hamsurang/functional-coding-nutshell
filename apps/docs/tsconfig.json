@@ -1,5 +1,5 @@
 {
-  "extends": "./nextjs.json",
+  "extends": "@nutshell/ts-config/nextjs.json",
   "compilerOptions": {
     "plugins": [
       {

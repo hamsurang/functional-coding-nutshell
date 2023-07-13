@@ -1,15 +1,28 @@
 {
   "index": "README",
+  "members": "Members",
+
+  "-- Seperator": {
+    "type": "separator",
+    "title": ""
+  },
 
   "weeks": "",
 
-  "---": {
-    "type": "separator"
+  "-- More": {
+    "type": "separator",
+    "title": "More"
   },
 
   "about-link": {
     "title": "Go to Notion ↗",
     "href": "https://minsooweb.notion.site/a6f94677860c462399db96f34e121c70?pvs=4",
+    "newWindow": true
+  },
+
+  "organization-link": {
+    "title": "함수랑 산악회 ↗",
+    "href": "https://github.com/function-and-mountain",
     "newWindow": true
   }
 }
