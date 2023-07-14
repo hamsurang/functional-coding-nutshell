@@ -1,4 +1,4 @@
-import { AvatarProps } from "../components/Avatar/Avatar.types";
+import { AvatarProps } from "@components/Avatar/Avatar.types";
 
 export const members: AvatarProps[] = [
   {
