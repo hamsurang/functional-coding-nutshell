@@ -1,7 +1,7 @@
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import { AvatarProps } from "./Avatar.types";
 
-export const Avatar = ({ ghId, username, nameKr }: AvatarProps) => {
+export const Avatar = ({ ghId, username, name }: AvatarProps) => {
   return (
     <Flex
       flexDir="column"
@@ -41,7 +41,7 @@ export const Avatar = ({ ghId, username, nameKr }: AvatarProps) => {
       </Box>
 
       <Text>
-        {nameKr} / {username}
+        {name} / {username}
       </Text>
     </Flex>
   );
