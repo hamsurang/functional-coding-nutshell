@@ -21,7 +21,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       },\
       {\
         "name": "@nutshell/example",\
-        "reference": "workspace:packages/sample"\
+        "reference": "workspace:packages/example"\
       },\
       {\
         "name": "@nutshell/ts-config",\
@@ -35,7 +35,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "enableTopLevelFallback": true,\
     "ignorePatternData": "(^(?:\\\\.yarn\\\\/sdks(?:\\\\/(?!\\\\.{1,2}(?:\\\\/|$))(?:(?:(?!(?:^|\\\\/)\\\\.{1,2}(?:\\\\/|$)).)*?)|$))$)",\
     "fallbackExclusionList": [\
-      ["@nutshell/example", ["workspace:packages/sample"]],\
+      ["@nutshell/example", ["workspace:packages/example"]],\
       ["@nutshell/rollup-config", ["workspace:tools/rollup"]],\
       ["@nutshell/ts-config", ["workspace:tools/config-ts"]],\
       ["docs", ["workspace:apps/docs"]],\
@@ -4284,10 +4284,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@nutshell/example", [\
-        ["workspace:packages/sample", {\
-          "packageLocation": "./packages/sample/",\
+        ["workspace:packages/example", {\
+          "packageLocation": "./packages/example/",\
           "packageDependencies": [\
-            ["@nutshell/example", "workspace:packages/sample"]\
+            ["@nutshell/example", "workspace:packages/example"]\
           ],\
           "linkType": "SOFT"\
         }]\

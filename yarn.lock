@@ -2537,9 +2537,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nutshell/example@workspace:packages/sample":
+"@nutshell/example@workspace:packages/example":
   version: 0.0.0-use.local
-  resolution: "@nutshell/example@workspace:packages/sample"
+  resolution: "@nutshell/example@workspace:packages/example"
   languageName: unknown
   linkType: soft
 
