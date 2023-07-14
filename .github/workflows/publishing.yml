@@ -2,7 +2,10 @@ name: git push into another repo to deploy to vercel
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+    paths:
+      - "apps/docs/**"
 
 jobs:
   build:
@@ -20,7 +23,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.PERSONAL_TOKEN }}
         with:
-          source-directory: 'output'
+          source-directory: "output"
           destination-github-username: minsoo-web
           destination-repository-name: functional-coding-nutshell
           user-email: ${{ secrets.OFFICIAL_ACCOUNT_EMAIL }}
