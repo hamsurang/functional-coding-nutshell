@@ -13,7 +13,8 @@
   "scripts": {
     "docs": "yarn workspace docs",
     "lint": "eslint .",
-    "pre-commit": "lint-staged --config .lintstagedrc.js"
+    "pre-commit": "lint-staged --config .lintstagedrc.js",
+    "example": "yarn workspace @nutshell/example"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^13.0.5",

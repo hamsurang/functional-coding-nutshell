@@ -1,0 +1,6 @@
+{
+  "name": "@nutshell/example",
+  "scripts": {
+    "test": "jest"
+  }
+}

@@ -2537,11 +2537,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nutshell/practice@workspace:packages/practice":
+"@nutshell/example@workspace:packages/sample":
   version: 0.0.0-use.local
-  resolution: "@nutshell/practice@workspace:packages/practice"
-  dependencies:
-    jest: ^29.3.1
+  resolution: "@nutshell/example@workspace:packages/sample"
   languageName: unknown
   linkType: soft
 

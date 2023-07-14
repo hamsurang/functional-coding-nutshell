@@ -20,8 +20,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:apps/docs"\
       },\
       {\
-        "name": "@nutshell/practice",\
-        "reference": "workspace:packages/practice"\
+        "name": "@nutshell/example",\
+        "reference": "workspace:packages/sample"\
       },\
       {\
         "name": "@nutshell/ts-config",\
@@ -35,7 +35,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "enableTopLevelFallback": true,\
     "ignorePatternData": "(^(?:\\\\.yarn\\\\/sdks(?:\\\\/(?!\\\\.{1,2}(?:\\\\/|$))(?:(?:(?!(?:^|\\\\/)\\\\.{1,2}(?:\\\\/|$)).)*?)|$))$)",\
     "fallbackExclusionList": [\
-      ["@nutshell/practice", ["workspace:packages/practice"]],\
+      ["@nutshell/example", ["workspace:packages/sample"]],\
       ["@nutshell/rollup-config", ["workspace:tools/rollup"]],\
       ["@nutshell/ts-config", ["workspace:tools/config-ts"]],\
       ["docs", ["workspace:apps/docs"]],\
@@ -4283,12 +4283,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["@nutshell/practice", [\
-        ["workspace:packages/practice", {\
-          "packageLocation": "./packages/practice/",\
+      ["@nutshell/example", [\
+        ["workspace:packages/sample", {\
+          "packageLocation": "./packages/sample/",\
           "packageDependencies": [\
-            ["@nutshell/practice", "workspace:packages/practice"],\
-            ["jest", "virtual:b6039ca237c7948282e97508dc948845fca5379c54c7e1a6efce77bd43b190c052882a75d87ed8b38dc685c77218ba7958ff973dc0c8c06b8d40e4776e71835d#npm:29.6.1"]\
+            ["@nutshell/example", "workspace:packages/sample"]\
           ],\
           "linkType": "SOFT"\
         }]\
