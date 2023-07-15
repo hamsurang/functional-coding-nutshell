@@ -1,9 +1,3 @@
-/** @type {import('jest').Config} */
-const config = {
-  preset: "ts-jest",
-  testEnvironment: "node",
-  transformIgnorePatterns: ["<rootDir>/node_modules/"],
-  verbose: true,
-};
+const makeConfig = require("@nutshell/jest-config");
 
-module.exports = config;
+module.exports = makeConfig();

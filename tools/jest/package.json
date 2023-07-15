@@ -1,0 +1,10 @@
+{
+  "name": "@nutshell/jest-config",
+  "main": "./index.js",
+  "version": "0.0.1",
+  "devDependencies": {
+    "jest": "*",
+    "ts-jest": "*",
+    "typescript": "*"
+  }
+}
