@@ -7,5 +7,5 @@
   "typescript.tsdk": ".yarn/sdks/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "jestrunner.enableYarnPnpSupport": true,
-  "jestrunner.yarnPnpCommand": "yarn-3.6.1.cjs",
+  "jestrunner.yarnPnpCommand": "yarn-3.6.1.cjs"
 }
