@@ -1,0 +1,14 @@
+{
+  "name": "@nutshell/example",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@nutshell/jest-config": "workspace:*",
+    "@nutshell/ts-config": "workspace:*",
+    "@types/jest": "*",
+    "jest": "*",
+    "ts-jest": "*",
+    "typescript": "*"
+  }
+}

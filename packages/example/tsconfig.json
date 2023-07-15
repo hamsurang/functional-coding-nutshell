@@ -1,0 +1,7 @@
+{
+  "extends": "@nutshell/ts-config/base.json",
+  "compilerOptions": {
+    "types": ["jest"]
+  },
+  "include": ["src"]
+}
