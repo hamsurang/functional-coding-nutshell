@@ -1,4 +1,6 @@
-function multiDimensionalAccumulate(multiDimensionalArr) {
+export function multiDimensionalAccumulate(
+  multiDimensionalArr: number[][],
+): number {
   let accumulator = 0;
 
   for (let i = 0; i < multiDimensionalArr.length; i++) {
@@ -11,5 +13,3 @@ function multiDimensionalAccumulate(multiDimensionalArr) {
 
   return accumulator;
 }
-
-exports.multiDimensionalAccumulate = multiDimensionalAccumulate;

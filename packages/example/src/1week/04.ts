@@ -1,4 +1,4 @@
-function convertToConditionalUpperCase(words) {
+export function convertToConditionalUpperCase(words: string[]): string[] {
   let capitalized = [];
 
   for (let i = 0; i < words.length; i++) {
@@ -11,5 +11,3 @@ function convertToConditionalUpperCase(words) {
 
   return capitalized;
 }
-
-exports.convertToConditionalUpperCase = convertToConditionalUpperCase;

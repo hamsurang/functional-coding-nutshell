@@ -1,4 +1,4 @@
-function accumulate(arr) {
+export function accumulate(arr: number[]): number {
   let accumulator = 0;
 
   for (let i = 0; i < arr.length; i++) {
@@ -7,5 +7,3 @@ function accumulate(arr) {
 
   return accumulator;
 }
-
-exports.accumulate = accumulate;

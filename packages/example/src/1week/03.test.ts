@@ -1,7 +1,7 @@
-const { multiDimensionalAccumulate } = require('./03.js');
+import { multiDimensionalAccumulate } from "./03";
 
-describe('multiDimensionalAccumulate', () => {
-  it('case: 1', () => {
+describe("multiDimensionalAccumulate", () => {
+  it("case: 1", () => {
     const multiDimensionalArr = [
       [1, 2, 3, 4, 5, 6, 7, 8, 9],
       [9, 8, 7, 6, 5, 4, 3, 2, 1],
