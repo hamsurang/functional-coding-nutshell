@@ -1,0 +1,49 @@
+name: 🐞 Bug Report
+description: 어떤 버그를 발견하셨나요?! 저희에게 제보해주세요!
+labels: [bug]
+title: '[🐞] 버그에 대한 간략한 제목을 작성해주세요'
+body:
+  - type: markdown
+    attributes:
+      value: |
+        버그 제보에 기여해주셔서 감사합니다! 다음 항목들을 채워가다 보면 issue가 완성되어 있을거에요.
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: 어느 부분에 문제가 발생했나요?
+      options:
+        - Docs
+        - example
+        - practice
+        - 그 외
+
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      description: 문제에 대한 상세한 설명을 작성해주세요!
+      label: 문제에 대해 설명해주세요!
+      placeholder: 제가 뭘 했는데요... 제가 예상한 건 이건데... 실제로는 이렇게 동작하더라구요...
+
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: 재현하는 방법에 대해 알려주세요!
+      description: 재현할 수 있는 방법에 대해 자세히 알려주세요. 만약 특정 환경에서만 발생하는 것 같다면, OS 및 환경에 대한 정보도 알려주세요
+      placeholder: yarn test를 실행하는 와중에 발생했습니다.
+
+  - type: textarea
+    id: additional_information
+    attributes:
+      label: 추가 정보
+      description: 문제에 대해 못다한 이야기가 있나요? 여기서 자유롭게 작성해주세요!
+      placeholder: 제 생각엔 이게 문제인 것 같습니다...
+
+    validations:
+      required: false
