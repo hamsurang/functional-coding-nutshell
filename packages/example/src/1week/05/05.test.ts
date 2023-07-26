@@ -1,8 +1,8 @@
-import { deepCopy } from "./05";
+import { deepCopy } from './05'
 
-describe("deepCopy", () => {
-  it("case: 1", () => {
-    const obj = {};
+describe('deepCopy', () => {
+  it('case: 1', () => {
+    const obj = {}
     const obj2 = {
       1: undefined,
       a: [],
@@ -14,7 +14,7 @@ describe("deepCopy", () => {
           bbb: {
             ccc: {
               ddd: {
-                fp: "very wonderful!",
+                fp: 'very wonderful!',
               },
             },
           },
@@ -22,10 +22,10 @@ describe("deepCopy", () => {
       },
       children: {
         first: 0,
-        second: "함수형 프로그래밍",
+        second: '함수형 프로그래밍',
         forth: [
           {
-            string: "string",
+            string: 'string',
             number: 123,
             bool: false,
             nul: null,
@@ -38,9 +38,9 @@ describe("deepCopy", () => {
         ],
       },
       2: null,
-    };
+    }
 
-    expect(deepCopy(obj)).toEqual({});
+    expect(deepCopy(obj)).toEqual({})
     expect(deepCopy(obj2)).toEqual({
       1: undefined,
       a: [],
@@ -52,7 +52,7 @@ describe("deepCopy", () => {
           bbb: {
             ccc: {
               ddd: {
-                fp: "very wonderful!",
+                fp: 'very wonderful!',
               },
             },
           },
@@ -60,10 +60,10 @@ describe("deepCopy", () => {
       },
       children: {
         first: 0,
-        second: "함수형 프로그래밍",
+        second: '함수형 프로그래밍',
         forth: [
           {
-            string: "string",
+            string: 'string',
             number: 123,
             bool: false,
             nul: null,
@@ -76,6 +76,6 @@ describe("deepCopy", () => {
         ],
       },
       2: null,
-    });
-  });
-});
+    })
+  })
+})

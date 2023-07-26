@@ -1,5 +1,5 @@
-var x = 2;
+const x = 2
 
 export function lineFunction() {
-  return 2 * x + 3;
+  return 2 * x + 3
 }
