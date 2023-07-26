@@ -6,6 +6,7 @@
     "airbnb",
     "plugin:import/errors",
     "plugin:import/warnings",
+    "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@next/next/recommended"
   ],
