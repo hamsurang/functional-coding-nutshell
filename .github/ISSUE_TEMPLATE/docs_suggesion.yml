@@ -1,0 +1,19 @@
+name: 📖 Documentation Suggestion
+description: Docs에 개선하고 싶은 문제나, 궁금하신 사항이 있나요?
+title: '[📖] 제안하고 싶은 내용이나 문제에 대해 간략한 제목을 작성해주세요'
+labels: ['docs']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Docs 개선에 관심을 갖고 방문해주셔서 감사합니다! 
+        저희 docs에는 모든 페이지에 `Edit this page`라는 버튼이 있습니다. 직접 수정하실 수 있는 내용 같아보인다면, PR을 대신 활용해주세요!
+        ![Screenshot](https://github.com/minsoo-web/ETC/assets/57122180/e713855b-e86b-4006-9b2c-532422deacb8)
+
+  - type: textarea
+    id: description
+    attributes:
+      description: 제안하고 싶은 내용을 자세하고 명확하게 작성해주세요!
+      label: 제안사항
+    validations:
+      required: true
