@@ -8,13 +8,14 @@
   "workspaces": [
     "apps/*",
     "tools/*",
-    "packages/*"
+    "packages/**/*"
   ],
   "scripts": {
     "docs": "yarn workspace docs",
     "lint": "eslint .",
     "pre-commit": "lint-staged --config .lintstagedrc.js",
     "test": "jest",
+    "practice:fe-cafe": "yarn workspace @practice/fecrash-cafe",
     "example": "yarn workspace @nutshell/example"
   },
   "devDependencies": {
