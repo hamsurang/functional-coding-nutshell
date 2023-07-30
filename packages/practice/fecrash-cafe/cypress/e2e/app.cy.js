@@ -1,7 +1,7 @@
 describe('FECrash 카페', () => {
   beforeEach(() => {
     cy.visit({
-      url: 'http://localhost:5500/packages/practice/fecrash-cafe/index.html',
+      url: './index.html',
       method: 'GET',
     })
   })
