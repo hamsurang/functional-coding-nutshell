@@ -1,16 +1,17 @@
 const sum = (a: number, b: number): number => a + b
 
 /**
- * 접근방법:
- * flat과 reduce를 조합해서 간단하게 바꿔봤습니다.
- * 만약, 개선된 2번 문제를 사용할 수 있었다면, reduce의 콜백함수로 활용해서, flat 없이 작업해볼 수 있겠다? 라는 생각도 해봤습니다.
+ * 접근 방법:
+ * 커밋내역을 보시면 아시겠지만 ㅋㅋ큐ㅠㅠ 문제를 완전 잘못 이해하고 풀어버려서
+ * 다시 풀었습니다.
  *
- * @param arr 2중 배열입니다.
- * @returns 배열의 모든 숫자들의 합이 계산됩니다.
+ * 다시 풀었을 때 첫 접근 방법은 2중 reduce문을 사용해서 변수명을 직관적으로 지으면서 가독성을 높혔었는데
+ * 그럼 기존의 2중 for 문이랑 크게 다르지 않다고 생각해서 n^2 시간 복잡도를 개선해봤습니다.
+ * flatMap을 활용해서, 대각선 이하의 숫자들만 잘라내고
+ * 그 값들을 더했습니다.
  */
-export const multiDimensionalAccumulate = (
-  arr: number[][],
-  initialValue = 0,
-): number => {
-  return arr.flat().reduce(sum, initialValue)
+export const multiDimensionalAccumulate = (arr: number[][]): number => {
+  return arr
+    .flatMap((innerArray, rowIndex) => innerArray.slice(0, rowIndex))
+    .reduce(sum, 0)
 }
