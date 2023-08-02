@@ -1,4 +1,5 @@
-const hasIncludes = (url: string, value: string): boolean => url.includes(value)
+const hasIncludes = (url: string, value: string): 'YES' | 'NO' =>
+  url.includes(value) ? 'YES' : 'NO'
 
 export const splitHashPart = (
   text: string,
@@ -50,13 +51,13 @@ export const addQuery = (
   let returnUrl = nonHash
   let connector = '?'
 
-  if (hasIncludes(originURL, '?')) {
+  if (hasIncludes(originURL, '?') === 'YES') {
     connector = '&'
   }
 
   returnUrl += `${connector}${key}=${value}`
 
-  if (hasIncludes(originURL, `?${key}`)) {
+  if (hasIncludes(originURL, `?${key}`) === 'YES') {
     returnUrl = replaceKeyValue(nonHash, key, value)
   }
 
