@@ -42,6 +42,12 @@ describe('replaceKeyValue', () => {
       'minsoo?foo=foo',
     )
   })
+
+  it('case 3', () => {
+    expect(replaceKeyValue('minsoo?key=foo&key=baz', 'key', 'bar')).toBe(
+      'minsoo?key=bar&key=bar',
+    )
+  })
 })
 
 describe('addQuery', () => {
@@ -78,6 +84,18 @@ describe('addQuery', () => {
 
     expect(addQuery(URL, 'name', 'musk')).toBe(
       'https://www.linkedin.com/?name=musk#top',
+    )
+  })
+
+  test('case 5: 기존 쿼리와 추가하려는 쿼리의 key가 동일한 경우', () => {
+    const URL = 'https://www.linkedin.com/?name=elon&name=minsoo#top'
+
+    expect(addQuery(URL, 'name', 'musk')).toBe(
+      'https://www.linkedin.com/?name=musk&name=musk#top',
+    )
+
+    expect(addQuery(URL, 'name', 'musk')).toBe(
+      'https://www.linkedin.com/?name=musk&name=musk#top',
     )
   })
 })

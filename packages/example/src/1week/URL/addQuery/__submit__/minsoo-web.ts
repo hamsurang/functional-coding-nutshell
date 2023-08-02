@@ -24,7 +24,7 @@ export const replaceKeyValue = (
   key: string,
   newValue: string | number,
 ) => {
-  const regExp = new RegExp(`${key}=([^&]*)`, 'i')
+  const regExp = new RegExp(`${key}=([^&]*)`, 'g')
   if (url.match(regExp)) {
     return url.replace(regExp, `${key}=${newValue}`)
   }
