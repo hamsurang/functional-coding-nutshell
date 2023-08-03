@@ -1,7 +1,7 @@
 const hasIncludes = (url: string, value: string): 'YES' | 'NO' =>
   url.includes(value) ? 'YES' : 'NO'
 
-export const splitHashPart = (
+export const getHashPart = (
   text: string,
 ): { nonHash: string; hash: string } => {
   const indexOfHash = text.indexOf('#')
@@ -46,7 +46,7 @@ export const addQuery = (
   key: string,
   value: string | number,
 ) => {
-  const { nonHash, hash } = splitHashPart(originURL)
+  const { nonHash, hash } = getHashPart(originURL)
 
   let returnUrl = nonHash
   let connector = '?'

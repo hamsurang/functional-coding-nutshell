@@ -1,29 +1,29 @@
-import { addQuery, replaceKeyValue, splitHashPart } from './minsoo-web'
+import { addQuery, getHashPart, replaceKeyValue } from './minsoo-web'
 
-describe('splitHashPart', () => {
+describe('getHashPart', () => {
   it('case 1', () => {
-    expect(splitHashPart('minsoo#foo')).toEqual({
+    expect(getHashPart('minsoo#foo')).toEqual({
       nonHash: 'minsoo',
       hash: '#foo',
     })
   })
 
   it('case 2', () => {
-    expect(splitHashPart('http://www.minsoo#foo')).toEqual({
+    expect(getHashPart('http://www.minsoo#foo')).toEqual({
       nonHash: 'http://www.minsoo',
       hash: '#foo',
     })
   })
 
   it('case 3', () => {
-    expect(splitHashPart('http://www.minsoo')).toEqual({
+    expect(getHashPart('http://www.minsoo')).toEqual({
       nonHash: 'http://www.minsoo',
       hash: '',
     })
   })
 
   it('case 4: 일반적이진 않지만, 의도치 않게 해시가 여러개 들어가있는 경우', () => {
-    expect(splitHashPart('http://www.minsoo#foo#minsoo')).toEqual({
+    expect(getHashPart('http://www.minsoo#foo#minsoo')).toEqual({
       nonHash: 'http://www.minsoo',
       hash: '#foo#minsoo',
     })
