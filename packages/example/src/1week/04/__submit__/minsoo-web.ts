@@ -1,4 +1,4 @@
-const condition = (text: string, criteria = 5) => text.length > criteria
+const isLongerThanCriteria = (text: string, criteria = 5) => text.length > criteria
 
 /**
  * 접근 방법:
