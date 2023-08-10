@@ -1,4 +1,5 @@
-const isLongerThanCriteria = (text: string, criteria = 5) => text.length > criteria
+const isLongerThanCriteria = (text: string, criteria = 5) =>
+  text.length > criteria
 
 /**
  * 접근 방법:
@@ -10,6 +11,6 @@ const isLongerThanCriteria = (text: string, criteria = 5) => text.length > crite
  */
 export function convertToConditionalUpperCase(words: string[]): string[] {
   return words.map((word) =>
-    condition(word) ? word.toUpperCase() : word.toLocaleLowerCase(),
+    isLongerThanCriteria(word) ? word.toUpperCase() : word.toLocaleLowerCase(),
   )
 }
