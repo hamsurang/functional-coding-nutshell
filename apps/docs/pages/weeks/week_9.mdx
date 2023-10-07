@@ -1,0 +1,389 @@
+import { Callout } from 'nextra/components'
+
+# 9회차
+
+[👉 노션에서 자세히 보기](https://www.notion.so/minsooweb/9-7d0c20c516634f46946c82683f61cbbd?pvs=4)
+
+[9️⃣ 9회차 공지사항](https://www.notion.so/minsooweb/9-96b0a02c4bcc40f0881a27ed33473f11?pvs=4)
+
+## Check In 🚪
+
+![무드미터](https://file.notion.so/f/s/65e29408-5fbb-4b16-9f4d-a38a4cf0a8d1/201557736_500.jpg?id=70877e09-6052-443e-9d61-c2868b8154e4&table=block&spaceId=acbe5465-92d7-426a-ab5f-c7e71d7be6e6&expirationTimestamp=1696759200000&signature=VlCHADiZDLfWl0EedjWfRsCmZnv-EGA8Xm-TvWtYC3M&downloadName=201557736_500.jpg)
+
+[Join /functional-programming's Cuckoo Timer!](https://cuckoo.team/functional-programming)
+
+<details>
+  <summary>**민수(김)**</summary>
+  - 기진맥진한
+  - 자랑스러운
+</details>
+<details>
+  <summary>**충일**</summary>
+  - 안락한
+  - 짜릿한
+    ![colorExtract](https://file.notion.so/f/f/acbe5465-92d7-426a-ab5f-c7e71d7be6e6/8d502386-11be-4332-8bc6-a62ee1557ae8/Untitled.png?id=1cbd85b1-99b3-47d7-86b0-87457ed00b0a&table=block&spaceId=acbe5465-92d7-426a-ab5f-c7e71d7be6e6&expirationTimestamp=1696795200000&signature=aLBtqB_zqPNws5-i8P0D4n-kB1MiusxkRNl6shYOg7s&downloadName=Untitled.png)
+    ![console](https://file.notion.so/f/f/acbe5465-92d7-426a-ab5f-c7e71d7be6e6/c799d8c8-01db-47de-bfc7-9df52ad995cd/Untitled.png?id=eddce88d-ccff-4888-a88c-e20cbf9e4827&table=block&spaceId=acbe5465-92d7-426a-ab5f-c7e71d7be6e6&expirationTimestamp=1696795200000&signature=2hdTDI9YCQ-N0X_Px2_P3jtOxf4gSdzCwr2_R_57vPs&downloadName=Untitled.png)
+</details>
+<details>
+  <summary>**예진**</summary>
+  - 피곤한
+  - 슬픈
+    - 마지막이라니 🥲🥲🥲
+</details>
+<details>
+  <summary>**민수(박)**</summary>
+  - 재미있는
+  - 차분한
+</details>
+
+# 이론 파트 📝
+
+<Callout emoji="✅">
+Chapter: Ch18 ~ 끝
+</Callout>
+
+> 좋았던 내용, 또는 논의하고 싶었던 내용을 기반으로
+공유하고 싶은 이론 파트를 정리해보아요!
+>
+
+<details>
+  <summary>**수림**</summary>
+  <Callout>
+    마지막에 전체적으로 중요한 부분만 훑어봐서 좋았다. 특히 ValueCell 함수의 경우, 최근에 바닐라에서 적용하였는데 이 때는 클로저로 인해 최신 값을 참조하지 못하는 현상을 해결하기 위해 이와같이 적용을 하였지만 안전한 데이터와 계산으로 활용할 수 있다는 점도 알게되어 좋았다.
+    </Callout>
+
+    ## 반응형 아키텍처
+
+    - **특징**
+        - 코드에 나타난 순차적 액션의 순서를 뒤집는다.
+        - 효과와 그 효과에 대한 원인을 분리해서 코드에 복잡하게 꼬인 부분을 풀 수 있다.
+    - **유용한 경우**
+        - n x m문제가 발생하였을 때 유용하다.
+
+    ### 반응형 아키텍처가 바꾼 시스템의 결과
+
+    - 원인과 효과가 결합한 것을 분리한다.
+        - 코드가 더 유연하고 하려는 것을 정확하게 표현할 수 있다.
+    - 여러 단계를 파이프라인으로 처리한다.
+    - 타임라인이 유연해진다.
+
+    ## 감시자 개념을 적용한 ValueCell 함수
+
+    ```jsx
+    const ValueCell = (initialValue) => {
+      let value = initialValue
+      const subscribers = new Set([])
+
+      const val = () => {
+        return value
+      }
+
+      const update = (fn) => {
+        const oldValue = value
+        const newValue = fn(oldValue)
+
+        if (oldValue !== newValue) {
+          value = newValue
+          subscribers.forEach(subscriber => subscriber(newValue))
+        }
+      }
+
+      const subscribe = (fn) => {
+        subscribers.add(fn)
+      }
+
+      return {
+        val,
+        update,
+        subscribe
+      }
+
+    }
+    ```
+
+    ## 결합의 분리는 원인과 효과의 중심을 관리합니다
+
+    - 원인과 결과가 모두 연결되어 있기 때문에 관리해야할 것이 `바꾸는 방법(원인) X 할 일 (효과)`개라고 할 수 있다.
+    - 원인이나 효과가 늘어나면 관리해야 할 것도 늘어난다.
+    ⇒ 원인과 효과를 분리하면 해결!
+    - 문제가 없는데 이 방법으로 분리하는 것은 좋지 않음
+
+    ## 어니언 아키텍처
+
+    - **특징**
+        - 웹 서비스나 온도 조절 장치 같은 현실 세계와 상호작용하기 위한 서비스 구조를 만든다.
+        - 인터랙션 계층을 바꾸기 쉽다.
+        ⇒ 도메인 계층을 재사용하기 좋다.
+    - **구조**
+        - 인터랙션 > 도메인 > 언어
+
+    ### 인터랙션 계층
+
+    - 바깥세상에 영향을 주거나 받는 액션
+
+    ### 도메인 계층
+
+    - 비즈니스 규칙을 정의하는 계산
+
+    ### 언어 계층
+
+    - 언어 유틸리티와 라이브러리
+
+    ## 어니언 아키텍처 규칙
+
+    - 현실 세계와 상호작용은 인터랙션 계층에서 해야한다.
+    - 계층에서 호출하는 방향은 중심 방향이다.
+    - 계층은 외부에 어떤 계층이 있는지 모른다.
+
+    ## 계층형 설계
+
+    - 함수 호출 관계를 기반으로 함수를 배치하는 방법
+
+    ### 전통적인 계층형 아키텍처
+
+    Ex. 웹 서버를 만들 때 사용하는 전형적인 계층
+
+    > 데이터 베이스 계층이 최하단에 있다면 그 위에 모든 것이 액션이 되기 때문에 함수형 스타일이 아니다.
+    >
+    - **웹 인터페이스 계층**
+        - 웹 요청을 도메인으로 바꾸고 도메인을 웹 응답으로 바꾼다.
+    - **도메인 계층**
+        - 애플리케이션 핵심 로직으로 도메인 개념에 DB 쿼리나 명령이 들어간다.
+    - **데이터베이스 계층**
+        - 시간에 따라 바뀌는 정보를 저장한다.
+
+    ## 꼭 기억해야 할 것 (p.544)
+
+    ### 어떤 경우에는 액션에 계산이 숨어있다.
+
+    - 액션과 계산, 데이터를 구분하는 것은 함수형 프로그래밍 기술의 기본이다.
+
+    ### 고차 함수를 사용하면 추상화에 대한 개념이 넓어진다.
+
+    - 똑같은 저수준의 코드를 반복적으로 만들지 않아도 된다.
+
+    ### 코드에서 시간의 의미는 마음대로 바꿀 수 있다.
+
+    - 코드가 실행되는 순서를 이해하는 것은 매우 중요하다.
+
+    ## 투 트랙으로 마스터가 되기
+
+    ### 트랙 1. 샌드박스
+
+    > 즐겁게 기술을 연습하고 실험하는 것
+    >
+    - 연습 문제로 연습
+    - 사이드 프로젝트
+    - 제품 코드에서 버려진 브랜치
+
+    ### 트랙 2. 제품
+
+    > 조심스럽게 실제 코드에 기술을 적용하는 것
+    >
+    - 이미 있는 코드를 리팩터링
+    - 이미 있는 프로젝트에 새로운 기능
+    - 새로 만드는 깨끗한 제품
+    - 다른 사람들을 가르치기
+</details>
+<details>
+  <summary>**종현**</summary>
+    비동기 Queue를 보고나서 이게 너무 해보고 이 내용을 공유하고 싶었어요. 오늘 오지는 못했지만 코드랑 결과물 공유하고 갑니당. 아직 부족한 점이 많지만 뭔가 더 잘 다듬고 싶군용
+
+    - 생각난 인터페이스
+
+        ```tsx
+
+        type Item = { text: string fn: (date: Date) => void}
+        const initialItems: Item[] = []
+
+        const queue = useQueue(initialItems,
+            {
+              select: (item) => item.fn,
+              worker: (fn) => setTimeout(() => fn(new Date()), 1500),
+            }
+          )
+
+        queue.add({ text: 'hi', fn: (date) => {
+          console.log(`invoked at ${date}`)
+        }})
+
+        queue.clear()
+        queue.items //
+        ```
+
+    - [소스코드](https://github.com/suspensive/react/blob/trial/queue/websites/visualization/src/app/react/queue/page.tsx)
+
+    - 배포된 소스 (사용해봐용)
+
+        https://use-queue.vercel.app/react/queue
+</details>
+<details>
+  <summary>**충일**</summary>
+  ### **반응형 아키텍처**
+
+    - **원인과 효과 분리:** 원인과 효과를 명확히 분리하여 설계함으로써 예측 가능한 시스템을 구축한다. 특정 입력에 대해 동일한 출력이 보장되어야 하며 순수 함수와 같은 개념을 반영.
+    - **데이터 변환의 파이프라인:** 데이터는 파이프라인을 통해 변환되며, 함수형 프로그래밍에서의 함수 조합을 반영한다. 각 변환 단계는 재사용 가능하고, 순수한 함수로 구성되어야 한다.
+    - **복잡한 동작의 구현:** 반응형 아키텍처는 다양한 계산을 조합하여 복잡한 동작을 구현한다. 고차 함수와 맵, 리듀스, 필터 같은 함수형 연산을 활용.
+
+    ### **어니언 아키텍처**
+
+    - **결합도와 응집도 관리:** 어니언 아키텍처는 코드의 결합도를 낮추고 응집도를 높임으로써 모듈 간의 독립성을 강화한다.
+    - **RX(반응형 확장 라이브러리) 활용:** RX는 반응형 프로그래밍을 위한 라이브러리로, 데이터 스트림의 변화에 따라 자동으로 반응하게 해준다. 함수형 프로그래밍의 지연 평가(lazy evaluation)와 연관(?)
+
+        ```jsx
+        const _ = require('lodash');
+
+        const data = _.range(1000); // 0부터 999까지의 배열 생성
+
+        const result = _.chain(data)
+          .filter(n => n % 2 === 0)  // 짝수만 선택
+          .map(n => n * n)           // 제곱 연산
+          .take(5)                   // 처음 5개의 요소만 선택
+          .value();                  // 지연 평가를 통해 연산을 실행하고 결과 값을 얻음
+
+        console.log(result); // [0, 4, 16, 36, 64]
+        ```
+
+    - **외부 스트림 서비스 연동:** 메시지 브로커와의 연동을 통해 실시간 데이터 스트림 처리가 가능하다.
+
+        *프랙털(fractal) : 일부 조각이 전체화 비슷한 구조, 소프트웨어 전체에 적용할 수 있지만 작은 부분에서도 적용 가능
+
+        ![fractal](https://file.notion.so/f/f/acbe5465-92d7-426a-ab5f-c7e71d7be6e6/5aa92e83-026d-4c09-8544-09a54a0dfde2/Untitled.png?id=c21f5da4-2c69-4dfc-9687-936d04455470&table=block&spaceId=acbe5465-92d7-426a-ab5f-c7e71d7be6e6&expirationTimestamp=1696795200000&signature=_xuPPnhOnFOtPW6UCjwt4TWZs6dCOFd8YXo3TiuIiQs&downloadName=Untitled.png)
+
+
+    ### **Cell**
+
+    - **ValueCell:** 기본적인 데이터 저장 단위로, 순수한 값을 저장한다. 함수형 프로그래밍에서의 불변성(immutability) 개념을 반영할 수 있다.
+    - **감시자 기능:** Observable 패턴을 활용하여 값의 변화를 감지하고, 그에 따른 반응형 동작을 수행한다.
+    - **FormulaCell:** 다른 Cell의 값을 참조하여 새로운 값을 파생한다. 함수형 프로그래밍에서의 고차 함수와 맵(map) 연산을 생각해볼 수 있다.
+</details>
+<details>
+  <summary>**예진**</summary>
+    **반응형 아키텍쳐**
+
+    - 반응형 아키텍쳐를 쓰지 않았을 때, 원인이나 효과가 바뀔 때마다 변경점이 늘어난다고 하였는데, 이게 얼마나 힘든건지 반응형을 쓰고 있지 않은 서비스를 개발하면서 뼈저리게 느끼고 있습니다 😢. JS로 ValueCell과 같은 것만 만들어도 훨씬 편하게 개발할 수 있을텐데…!
+    - 책에서 소개한,  ValueCell, FormulaCell 같은 것이 함수형 *언어* 에도 있다는게 신기했습니다. 프론트엔드에서 주로 쓰는 렌더링 라이브러리나 전역 상태 관리 라이브러리에만 있을 줄 알았는데, 언어 자체에서도 지원이 된다니…!
+    - ValueCell, FormulaCell을 직접 구현한 코드를 잘 이해하면, 반응형을 제공하는 라이브러리의 api들이 내부적으로 어떻게 동작하는지 더 잘 이해할 수 있을 것 같네요 bb
+    - Svelte 5가 Runes라는 반응형을 제공할 계획 이라고 하네요 👀
+        - https://svelte-5-preview.vercel.app/docs/introduction
+        - https://www.youtube.com/watch?v=RVnxF3j3N8U
+
+        ```javascript
+        // ValueCell
+        let count = $state(0);
+        // FormulaCell
+        let double = $derived(count * 2);
+        // ValueCell의 addWatcher
+        $effect(() => {
+        		// runs when the component is mounted, and again
+        		// whenever `count` or `double` change,
+        		// after the DOM has been updated
+        		console.log({ count, double });
+
+        		return () => {
+        			// if a callback is provided, it will run
+        			// a) immediately before the effect re-runs
+        			// b) when the component is destroyed
+        			console.log('cleanup');
+        		};
+        	});
+        ```
+
+
+    **어니언 아키텍쳐**
+
+    - 어니언 아키텍쳐에서는 ‘도메인 계층’이 계산으로 만들 수 있는 부분이고, 최대한 도메인 계층을 많이 만들고, 거기에 테스트를 잘 붙여서 애플리케이션을 견고하게 설계할 수 있다는 것으로 이해했습니다.
+</details>
+<details>
+  <summary>**민수(박)**</summary>
+    ## 좋았던 점
+
+    - 리액트 같은 반응형 아키텍처를 많이 사용하고 있었음에도 반응형 하면 아키텍처보다는 pub/sub 같은 디자인패턴정도로 먼저 생각이 들었었는데, 하나의 앱을 관리하는 아키텍처 규모로 생각할 수 있는 사고의 확장이 된 것 같아서 좋았습니다.
+    - `함수형 아키텍처`라는 용어가 생소했는데, 예시로 들어준 전통형 웹 아키텍처에서 디비 부분을 액션으로 보고 계산과 분리한다는 접근이 신기했습니다. 분명 많이 써오고 있었을텐데 논리적으로 책에 기술이 되어있으니 정리하기 좋았습니다.
+</details>
+
+[[9주차] 쏙쏙쑥쑥 스터디 만족도 조사](https://forms.gle/rqbSgZnT47uA4p5WA)
+
+<Callout emoji="🙇‍♂️">
+**필수 응답을 우수 참여자 투표로만 바꿨습니다!**
+
+우수 참여자 투표에도 많은 영향을 주니, 시간 내서 서베이 참가해주시면 너무 감사하겠습니다..!
+</Callout>
+
+---
+
+## 쏙쏙쑥쑥 마지막 안녕.
+
+<Callout emoji="🎶">
+ BGM 1월부터 6월까지
+</Callout>
+
+### 첫 만남부터 끝까지.
+
+![0회차 공지사항](https://file.notion.so/f/f/acbe5465-92d7-426a-ab5f-c7e71d7be6e6/11cc437a-d00f-4828-a2ec-59a1ad439cba/Untitled.png?id=1f64190e-1d6e-40cf-8cc9-28a0f9c41bbc&table=block&spaceId=acbe5465-92d7-426a-ab5f-c7e71d7be6e6&expirationTimestamp=1696795200000&signature=_a8RbbTC6JsXYpfJfdtn0cboAm-R3u8qcAx0pO6PWq0&downloadName=Untitled.png)
+
+![9회차 공지사항](https://file.notion.so/f/f/acbe5465-92d7-426a-ab5f-c7e71d7be6e6/ef9957bf-ba83-453f-91c6-73734019a0f6/Untitled.png?id=5311524a-5cf5-48fd-bf85-5ef1e05f8300&table=block&spaceId=acbe5465-92d7-426a-ab5f-c7e71d7be6e6&expirationTimestamp=1696795200000&signature=gR3JxwB7aNpBLnS47WkEZaK1-uXNU0kl8yx8flBTbig&downloadName=Untitled.png)
+
+<p>처음 운영해보는 스터디라 정말 많이 부족하고, 서툴었습니다.</p>
+<p>어떻게 하면 귀한 시간 내주신 여러분들에게 더 나은 스터디 경험을 전달해드릴 수 있을까 고민했었던 시간들이 주마등처럼 스쳐지나가네요</p>
+<br/>
+<p>여러분들에게 쏙쏙쑥쑥은 어떤 의미의 스터디였나요?</p>
+<p>저에게 쏙쏙쑥쑥은 23년의 여름날에 항상 기억될 추억이자 저에게 너무 좋은 사람들을 알게 해준 귀한 녀석입니다.</p>
+<br/>
+<p>많은 것을 배울 수 있는 시간은 아닐 수 있더라도, 귀찮고 짐처럼 느껴지는 스터디의 시간으로 기억되지 않으셨다면 저에겐 그걸로 만족입니다.</p>
+
+### 세상 귀한 스터디원분들.
+
+![스터디원들](https://file.notion.so/f/f/acbe5465-92d7-426a-ab5f-c7e71d7be6e6/68d7dd58-2caa-40d9-962d-03fc1a0851bf/Untitled.png?id=e3f97c0b-6ef0-4b60-a0fc-bf58bb8cba92&table=block&spaceId=acbe5465-92d7-426a-ab5f-c7e71d7be6e6&expirationTimestamp=1696795200000&signature=i1m10zjTlTHS979EoxEqOhWDlC7RzN6ajtktDqEzbO8&downloadName=Untitled.png)
+
+스터디 시간을 되돌아보다보니, 가장 먼저 기억에 나는 건 당연히 저희 첫만남 OT 때의 어색어색한 인사 시간이 기억에 남는 것 같습니다.
+
+***하이라이트***
+
+![이걸 어떻게 안 열어보냐고](https://file.notion.so/f/f/acbe5465-92d7-426a-ab5f-c7e71d7be6e6/b74d99b4-5c21-445b-9ed3-b16717e5eeae/Untitled.png?id=1348cf51-35d6-446d-8acd-217ea287ed9d&table=block&spaceId=acbe5465-92d7-426a-ab5f-c7e71d7be6e6&expirationTimestamp=1696795200000&signature=LK8rb5fXtydl9OjdtmF0KyxDXAmAWvJNDyZMw9qdzqY&downloadName=Untitled.png)
+
+이걸 어떻게 안 열어보냐고
+
+많은 분들의 노력 덕분에 스터디를 끝까지 완주할 수 있었지만,
+
+언제나 저의 우유부단함과 노계획을 냉철하고 차가운 T력으로 온도조절해주고 운영경험 한 번 없던 저의 제안을 흔쾌히 받아 끝까지 함께 해주신
+쏙쏙쑥쑥 운영진 수림님께 이 자리를 빌어 Special Thanks to를 남기고 싶습니다.
+
+![1:1 대화방 공지가 함수랑 산악회…](https://file.notion.so/f/f/acbe5465-92d7-426a-ab5f-c7e71d7be6e6/7c8cd275-3d0a-4c2d-982f-71dcb610c81e/Untitled.png?id=0c4f581d-8a32-409c-b557-dc65feac73d5&table=block&spaceId=acbe5465-92d7-426a-ab5f-c7e71d7be6e6&expirationTimestamp=1696795200000&signature=-wh4RtFZxtSSOExobjFxsiidGcOyVtBYbSz0UDv_VYo&downloadName=Untitled.png)
+
+1:1 대화방 공지가 함수랑 산악회…
+
+![쏙쏙쑥쑥 이름이 처음 나온 날 6/26](https://file.notion.so/f/f/acbe5465-92d7-426a-ab5f-c7e71d7be6e6/4f48a431-7f13-407c-a188-ef52045e1680/Untitled.png?id=a2213d83-16d3-4c3f-af94-85a303bef253&table=block&spaceId=acbe5465-92d7-426a-ab5f-c7e71d7be6e6&expirationTimestamp=1696795200000&signature=792AfcHSx8QaH0MT4w9xgaWE3YLowsnERr97yafXK3o&downloadName=Untitled.png)
+
+쏙쏙쑥쑥 이름이 처음 나온 날 6/26
+
+### 대망의 우수 참여자 시상식.
+
+여러분들의 의견을 통해 더 나은 스터디를 기획하고자 준비했던 서베이이기도 했지만, 우수 참여자 투표를 하기 위한 서베이였다는 사실도 기억하시나요?!
+
+오늘 투표를 마지막으로 우수 참여자가 최종 선정이 되는데요, 아직 투표를 못하신 분들은 어서 마무리 해주시길 바랍니다.
+
+대망의 우수 참여자에게는 소정의 상품을 전달하고 쏙쏙쑥쑥 명예의 전당에 올라갈 예정입니다. (쏙쏙쑥쑥 페이지)
+
+### 쏙쏙쑥쑥 웃으며 안녕.
+
+쏙쏙쑥쑥은 이번 회차를 마지막으로 마무리를 짓습니다.
+
+함수랑 산악회의 스터디는 앞으로도 계속될 것이고, 쏙쏙쑥쑥 채널도 저희의 인연도 마지막이 아니니
+
+우리 모두 웃으며 쏙쏙쑥쑥에게 안녕!
+
+# Check out 🚪
+
+- 종현
+  - ❤️사랑했다❤️
+
+
+# 🥳 해피아워 🎉
+
+- p민수: 금요일
+- 수림: 평일
+- 충일: 상관 없음
+- 예진: 일요일 빼구
+
+![마지막 찰칵](https://file.notion.so/f/f/acbe5465-92d7-426a-ab5f-c7e71d7be6e6/21044493-fe9f-45ad-9ea3-9ba0ae335c74/Untitled.png?id=8a1fb856-5e2f-411a-93b5-057d735ada5c&table=block&spaceId=acbe5465-92d7-426a-ab5f-c7e71d7be6e6&expirationTimestamp=1696795200000&signature=nrbp73GpNRU5AzwLV0900cTP1p_8SiZQ0A72-2d552o&downloadName=Untitled.png)

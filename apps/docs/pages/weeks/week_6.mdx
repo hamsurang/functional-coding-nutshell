@@ -1,0 +1,336 @@
+import { Callout } from 'nextra/components'
+
+# 6회차
+
+[👉 노션에서 자세히 보기](https://www.notion.so/minsooweb/1-bd4ec20c7f4f4e5a969020dc6ff0c7fe?pvs=4)
+
+[6️⃣ 6회차 공지사항](https://www.notion.so/minsooweb/6-db45eae918bc451db19a36dcccf245a2?pvs=4)
+
+## Check In 🚪
+
+![무드미터](https://file.notion.so/f/s/65e29408-5fbb-4b16-9f4d-a38a4cf0a8d1/201557736_500.jpg?id=70877e09-6052-443e-9d61-c2868b8154e4&table=block&spaceId=acbe5465-92d7-426a-ab5f-c7e71d7be6e6&expirationTimestamp=1696759200000&signature=VlCHADiZDLfWl0EedjWfRsCmZnv-EGA8Xm-TvWtYC3M&downloadName=201557736_500.jpg)
+
+[Join /functional-programming's Cuckoo Timer!](https://cuckoo.team/functional-programming)
+
+<details>
+  <summary>**민수(김)**</summary>
+  - 속편한
+    - changeset 을 드디어 적용했다.
+  - 골치 아픈 ..?
+    - DS 업무와 본업이 겹쳐서 진도가 너무 더디다
+</details>
+<details>
+  <summary>**수림**</summary>
+  - **아주 신나는**
+    - 무빙
+    - 스우파2
+  - **소모된**
+    - 피곤..
+</details>
+<details>
+  <summary>**종현**</summary>
+  - 속 편한
+    ![발표](https://file.notion.so/f/s/e2810dfb-8f0c-4b7c-93f6-5829c705d23d/Untitled.png?id=e87422c3-7a26-4e77-b893-0426c4c8bb41&table=block&spaceId=acbe5465-92d7-426a-ab5f-c7e71d7be6e6&expirationTimestamp=1696795200000&signature=BqYznJl26w66UANz1drFWyLQP9xTx8UmlIrmcQYnnKg&downloadName=Untitled.png)
+  - 지친
+    - 프로젝트 마무리 후 휴가 / 심장 쪼이는 느낌
+</details>
+<details>
+  <summary>**충일**</summary>
+  - 언짢은
+    - 맥북 → Gram…
+  - 영감을 받은
+    - 리펙토링이 좋은 걸까? 장단점을 살펴보게 되었다.
+</details>
+<details>
+  <summary>**예진**</summary>
+  - 만족스러운
+    - 밥도 클린하게 먹었고, 잠도 많이 자서 좋습니다~
+  - 동기부여된
+    - 사이드플젝 여러 개 하신 분의 트윗을 봤는데, UI가 중요하다고 해주셔서 어떻게 UI를 예쁘게 할 수 있을지 고민하고 있습니당
+</details>
+
+# 이론 파트 📝
+
+<Callout emoji="✅">
+Chapter: Ch13 ~ Ch14
+</Callout>
+
+> 좋았던 내용, 또는 논의하고 싶었던 내용을 기반으로
+공유하고 싶은 이론 파트를 정리해보아요!
+>
+
+<details>
+  <summary>**민수(김)**</summary>
+  ## 좋았던 내용
+
+    ```jsx
+    const sample = ['1,2,3,4,5']
+
+    // Case.1
+    sample.split(',').map(num => Number(num.trim()))
+
+    // Case.2
+    sample.split(',')
+    			.map(numText => numText.trim())
+    			.map(Number)
+
+    //충일
+    const numbersString = ['1,2,3,4,5'];
+
+    numbersString.split(',')
+      .map(strNum => Number(strNum));
+    ```
+
+    > 이렇게 여러 단계를 하나로 조합하는 것을 체이닝이라고 합니다.
+    >
+    <br/>
+    <p>지난 번에 수림님이 가져왔던 논의하고 싶었던 내용에서 map을 두 번으로 나누는 파트가 생각났습니다.</p>
+    <p>하나의 단계를 두 단계로 나누는 리뷰였었네요</p>
+    <p>Before (공백을 지우고, 숫자로 바꾸는 단계)</p>
+    <p>After (공백을 지우고 → 숫자로 바꾸고 →)</p>
+    <p>근데, trim도 결국엔 숫자로 바꾸기 위한 단계 중 하나라고 생각하면, 하나의 단계로 봐야 하는 게 아닌가? 라는 생각이 들었던 것 같습니다.</p>
+    <br/>
+    <p>p331 에서 스트림 결합이라는 내용으로 위 내용을 설명하네요!</p>
+    <p>가비지 컬렉션을 줄이는 방법으로 두 단계를 한 단계로 줄이는 최적화를 할 수 있다고 합니다.</p>
+
+    > 다시 말하지만 지금 하는 일은 최적화입니다.
+    병목이 생겼을 때만 쓰는 것이 좋고 대부분의 경우에는 여러 단계를 사용하는 것이 더 명확하고 읽기 쉽습니다.
+    >
+
+    라고 책도 후자를 지지한 점이 재밌었습니다.
+
+    ## 논의하고 싶은 내용
+
+    ```tsx
+    function biggestPurchasesBestCustomers(customers) {
+      var bestCustomers = customers.filter(() => {
+         // inline 선언
+      });
+      var biggestPurchases = bestCustomers.map(() => {
+         // inline 선언
+      });
+
+      return biggestPurchases
+    }
+    ```
+
+    ### 체인을 명확하게 만들기 1: 단계에 이름 붙이기
+
+    ```tsx
+    function biggestPurchasesBestCustomers(customers) {
+      var bestCustomers = selectBestCustomers(customers);
+      var biggestPurchases = getBiggestPurchases(bestCustomers);
+
+      return biggestPurchases
+    }
+    ```
+
+    ### 체인을 명확하게 만들기 2: 콜백에 이름 붙이기
+
+    ```tsx
+    function biggestPurchasesBestCustomers(customers) {
+      var bestCustomers = customers.filter(isGoodCustomer);
+      var biggestPurchases = bestCustomers.map(getBiggestPurchase);
+
+      return biggestPurchases
+    }
+    ```
+
+    > 일반적으로 두 번째 방법이 더 명확합니다.
+    >
+
+    책에서는 두 번째 방식이 더 명확하다고 표현하는데, 동의하시는지 궁금합니다.
+
+    저는 상황에 따라 다르겠지만 보통 첫 번째 방식을 선호하는 편인 것 같은데, 메소드 체이닝이라고 생각해보면, 두 번째 방식으로 filter와 map을 사용해서 체이닝으로 리턴하는 게 좀 더 간단할 것 같기도하고,, 궁금하네요!!
+
+    결국 함수를 두 번 선언하는 건 똑같고, 함수 선언으로 추상화를 했으니,
+    선언된 함수에서 인라인으로 작성된 콜백함수가 불편한 점이나 불명확함을 키울까?
+    그게 또 궁금한 포인트인 것 같아요. 세부 구현은 크게 신경쓰지 않는다. ← 이게 제가 생각하는 추상화의 장점이라서요
+
+    ```
+    const isAllChecked = () => getAgreementCheckboxElements().every(isChecked);
+
+    const isRequiredAllChecked = () => getAgreementCheckboxElements()
+        .filter(isRequired)
+        .every(isChecked);
+
+    export const isChecked = ($element: HTMLInputElement) => $element.checked;
+    ```
+</details>
+<details>
+  <summary>**수림**</summary>
+## 좋았던 부분
+
+    ### 항등 함수
+
+    인자로 받은 값을 그대로 리턴하는 함수
+
+    ### 체인을 명확하게 만드는 방법
+
+    1. 각 단계에 이름을 붙이기
+    2. 콜백에 이름을 붙이는 방법
+
+    ### 스트림 결합
+
+    map(), filter(), reduce() 체인을 최적화하는 것
+
+    ### 반복문을 함수형 도구로 리팩터링하기
+
+    1. **이해하고 다시 만들기**
+        1. 반복문을 잊고 어떤 일을 하는지 파악한 다음에 구현을 잊어버리는 것
+    2. **단서를 찾아 리팩터링**
+        1. 반복문을 하나씩 선택한 다음 함수형 도구 체인으로 변경하기
+
+    ### 리팩터링 팁
+
+    1. 데이터 만들기
+    2. 배열 전체를 다루기
+    3. 작은 단계로 다루기
+
+    ### 체이닝 디버깅을 위한 팁
+
+    - **구체적인 것을 유지하기**
+        - 데이터를 처리하는 과정에서 데이터가 어떻게 생겼는지 잊어버리기 쉽다.
+        - 각 단계에서 어떤 것을 하고 있는지 알기 쉽게 이름을 잘 지어야 한다.
+    - **출력해보기**
+        - 각 단계 사이에 print 구문을 넣어 코드를 돌려보기
+    - **타입을 따라가 보기**
+        - 함수형 도구는 정확한 타입이 있다.
+        - 각 단계를 지나는 값의 타입을 따라가 보기
+
+    ### 다양한 함수형 도구
+
+    - pluck
+    - concat
+    - frequenciesBy
+    - groupBy
+
+    ### 함수형 인터페이스
+
+    - **Function**
+        - 인자 하나와 리턴값을 갖는 함수
+        - map()에 전달하기 좋다
+    - **Predicate**
+        - 인자 하나와 true 혹은 false를 리턴하는 함수
+        - filter()에 전달하기 좋다
+    - **BiFunction**
+        - 인자 두 개와 리턴값을 갖는 함수
+        - 첫 번째 인자와 리턴 타입이 같은 경우 reduce()에 전달할 수 있다.
+    - **Consumer**
+        - 인자 하나를 받지만 리턴값이 없는 함수
+        - forEach()에 전달하기 좋다.
+
+    ## 논의하고 싶은 부분
+
+    p.324 각 단계에 이름 붙이기에서 어떻게 생각하는지??
+
+    - 함수명이 문맥인가? 변수명으로 이미 문맥을 나타내고 있지 않나?.?
+      ```jsx
+      const getBiggestPurchases = (customers) => map(customers, getBiggestPurchase)
+      // 고차 함수에 이름을 붙여 현재 문맥에 추가했습니다.
+      ```
+
+    - 이벤트 소싱 어떻게 구현해볼까?
+    - 객체를 함수형 도구로 다루기 위해 어떻게 할 수 있을까? (Ex. update())
+</details>
+<details>
+  <summary>**종현**</summary>
+## 좋았던 부분
+
+    - pluck
+    - concat
+    - frequenciesBy
+    - groupBy
+
+    역시 람다나 써드파티 라이브러리 써보고 싶은 걸요
+
+    ## 논의하고 싶은 내용
+
+    ### 체인을 명확하게 만들기 1: 단계에 이름 붙이기
+
+    ```tsx
+    function biggestPurchasesBestCustomers(customers) {
+      var bestCustomers = selectBestCustomers(customers);
+      var biggestPurchases = getBiggestPurchases(bestCustomers);
+
+      return biggestPurchases
+    }
+    ```
+
+    ### 체인을 명확하게 만들기 2: 콜백에 이름 붙이기
+
+    ```tsx
+    function biggestPurchasesBestCustomers(customers) {
+      var bestCustomers = customers.filter(isGoodCustomer);
+      var biggestPurchases = bestCustomers.map(getBiggestPurchase);
+
+      return biggestPurchases
+    }
+    ```
+
+    selectBestCustomers보다 customers.filter(isGoodCustomer)의 조합이 isGoodCustomer가 더 작은 단위의 역할이라 더 많은 곳에서 사용할 수 있는 함수여서 더 명확하다고 표현한 게 아닐까 싶어요
+
+    selectBestCustomers는 결국 사실 filterIsGoodCustomer니까 그렇게 이름 지으려면 customers.filter(isGoodCustomer)이 더 명확하다고 한 것 아닐까 싶어요
+</details>
+<details>
+  <summary>**충일**</summary>
+    ### 좋았던 부분
+    **함수형 도구에는 정확한 타입이 있다.** 자바스크립트처럼 타입이 없는 언어를 사용해도 함수형 도구는 타입이 있다. 다만 컴파일 타임에 타입을 검사하지 않을 뿐이다.
+
+    예를들어 `map()`은 콜백이 리턴하는 타입의 값, `reduce()`는 콜백이 리턴하는 값
+
+    암묵적 인자를 명시적 인자로 변경 → 암묵적 인자를 드러내기 리팩터링
+
+    ### 논의하고 싶은 부분
+
+    암묵적 인자를 명시적 인자로 드러낼 때 책에서는 `update2`, `update3`, `update4`를 예시로 사용했는데 해당 함수명에 대해서 어떻게 생각하시나요?
+
+    → 책에서도 해당 내용에 대해서는 추가 설명을 해주고 있네요!
+    <p>*update2는 두 번 중첩되었다는 뜻입니다.*</p>
+</details>
+<details>
+  <summary>**예진**</summary>
+    **좋았던 내용**
+    - 단계에 이름 붙이는 것과 콜백에 이름 붙이는 것의 장단점을 말해준 것. 원래는 둘 다 좋은 리팩토링 기법이라고 생각했는데, 책에서 둘을 비교해주니 좀 더 세세하게 비교해볼 수 있었다. 콜백에 이름 붙이는 것의 장점이 생각보다 많았던 것 같아서, 앞으로는 콜백을 분리하는걸 더 많이 적용해볼 것 같다.
+    - 책에서 계속해서 암묵적 인자를 드러내는 리팩토링을 반복한다. 이 과정이 얼마나 강력하게 리팩토링을 해줄 수 있는지 알 수 있었다.
+
+    **논의하고 싶은 내용**
+    - p.346) 장바구니 예제처럼, 배열 형태로 기록하는 예제를 알고 계신게 있는지?!
+</details>
+
+
+# 실습 💻
+
+## 실습 풀이 및 리뷰간 논의하고 싶었던 내용
+
+## 실습 문제 아이디어 스토밍
+
+# Check out 🚪
+
+- **k민수**
+    - 갈수록 적을 게 없다는 것을 느꼈다. (읽는대로 머리에 저장하는 느낌)
+    - 북마크를 안쓰고 있다 키키 얼마 안남았당
+- **수림**
+    - 할 말 없어지는 거 공감합니다. (머리에 저장하기22)
+    - 스터디 일찍 끝나서 CA 참여할 수 있어서 좋아용
+    - 이야기 비슷한 부분에 싱크가 맞아져서 재밌당
+    - playwright 자동화 알아가게 되는 것 대만족 키키
+- **종현**
+    - 할 말 없어지는 거 공감합니다. (머리에 저장하기33)
+- **충일**
+    - 스터디 열어주셔서 감사합니다!
+    - 훌륭하신 개발자분들이랑 이야기할 수 있는 기회가 만들어져서 좋아요
+    - 오늘 하면서 느낀 점이 changeset, 테스트 자동화 등 같이 뭔가 세팅해보는 시간 있어도 좋을 것 같아요
+        - 공통적으로 다들 자동화를 원해서 같이 세팅하면 재밌을 것 같아요
+- **예진**
+    - ‘잘하려면 잘하는 사람 옆에 있어야 한다’고 들었다.
+    - 귀동냥으로 얻어가는 게 많아 좋다.
+
+[[6주차] 쏙쏙쑥쑥 스터디 만족도 조사](https://forms.gle/dLmEcAWhLv52VoQt9)
+
+<Callout emoji="🙇‍♂️">
+지난 5회차에 설문조사 작성을 마니 안 해주셔가지구 ㅜㅜ
+**필수 응답을 우수 참여자 투표로만 바꿨습니다!**
+
+우수 참여자 투표에도 많은 영향을 주니, 시간 내서 서베이 참가해주시면 너무 감사하겠습니다..!
+</Callout>

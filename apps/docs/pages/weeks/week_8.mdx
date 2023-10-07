@@ -1,0 +1,388 @@
+import { Callout } from 'nextra/components'
+
+# 8회차
+
+[👉 노션에서 자세히 보기](https://www.notion.so/minsooweb/8-991d6a237d76469494e09a25a7a2979c?pvs=4)
+
+[8️⃣ 8회차 공지사항](https://www.notion.so/minsooweb/8-44f2a09d24424f67920a4ad038d39429?pvs=4)
+
+
+## Check In 🚪
+
+![무드미터](https://file.notion.so/f/s/65e29408-5fbb-4b16-9f4d-a38a4cf0a8d1/201557736_500.jpg?id=70877e09-6052-443e-9d61-c2868b8154e4&table=block&spaceId=acbe5465-92d7-426a-ab5f-c7e71d7be6e6&expirationTimestamp=1696759200000&signature=VlCHADiZDLfWl0EedjWfRsCmZnv-EGA8Xm-TvWtYC3M&downloadName=201557736_500.jpg)
+
+[Join /functional-programming's Cuckoo Timer!](https://cuckoo.team/functional-programming)
+
+<details>
+  <summary>**민수(김)**</summary>
+  - 만족스러운
+    - DS 이름이 새로 정해졌는데 만족스럽다.
+      - imDS
+        - clay
+        - clayground
+  - 마음이 불편한
+    - DS 랑 원래 스쿼드 일이랑 같이 하는 중인데 바빠 죽겠다
+</details>
+<details>
+  <summary>**수림**</summary>
+  - 피곤한
+  - 감사하는
+</details>
+<details>
+  <summary>**충일**</summary>
+  - 지친 → 편한
+    - 스터디 하기 전까지 지쳐있었는데 함수랑 산악회 스터디 준비하면서 컨디션이 좋아짐… (도대체 왜?)
+  - 들뜬
+    - 라이브러리를 만들고있는데 어떤 기능들을 만들지 기대되는 상태
+</details>
+<details>
+  <summary>**예진**</summary>
+  - 평온한
+    - 재택은 평온한
+  - 궁금한
+    - 다들 무슨 얘기 준비해오셨는지 궁금하네요
+</details>
+<details>
+  <summary>**민수(박)**</summary>
+  - 재미있는
+  - 피곤한
+</details>
+
+# 이론 파트 📝
+
+<Callout emoji="✅">
+Chapter: Ch 15 ~ Ch 17
+</Callout>
+
+> 좋았던 내용, 또는 논의하고 싶었던 내용을 기반으로
+공유하고 싶은 이론 파트를 정리해보아요!
+>
+
+<details>
+  <summary>**민수(김)**</summary>
+    16장에서 Queue를 직접 구현해서 비동기를 동기로 처리하는 과정을 읽는 게 재밌었다.
+
+    async await 쓰면 되지, 라는 생각을 떨쳐버리기는 쉽지 않았지만 Promise 가 없었다면 이걸 처음 만든 사람은 박수갈채를 받지 않았을까 라는 생각에 재밌게 읽었다.
+
+    17장에서 실패하지만 빠르게 동작하는 새로운 코드 읽으면서
+
+    <video controls width="250">
+      <source src="https://file.notion.so/f/f/acbe5465-92d7-426a-ab5f-c7e71d7be6e6/026e5bb6-1dd2-43ec-bc0b-4a2973580a5a/Download.mp4?id=b4bd719b-42e5-49e4-a17e-2b670119833d&table=block&spaceId=acbe5465-92d7-426a-ab5f-c7e71d7be6e6&expirationTimestamp=1696795200000&signature=42RDUtGs6n1JTtaQVQtnKpojlaz28Mj0gmrSKDqWLGg&downloadName=Download.mp4" type="video/mp4" />
+    </video>
+
+    ![Untitled](https://file.notion.so/f/f/acbe5465-92d7-426a-ab5f-c7e71d7be6e6/7272b54b-b2c8-4135-9cc6-f17f92ff6378/Untitled.png?id=9d8b11b3-95c1-4751-8819-d5327a8e663a&table=block&spaceId=acbe5465-92d7-426a-ab5f-c7e71d7be6e6&expirationTimestamp=1696795200000&signature=bPSryVWno9Wz2IinOQ5BIFrsbJB5dw2HFmOGbqMNWlw&downloadName=Untitled.png)
+
+    <br/>
+    <p>위 두 개가 생각났는데,</p>
+    <p>성공한다면 빠른게 더 좋은걸까? 라는 의문이 들었었다.</p>
+    <br/>
+    <p>비슷한 고민을 최근에 DS를 만들면서 하고 있는데,</p>
+    <p>예를 들어 다음과 같은 use case가 있다</p>
+
+    ```jsx
+    <Tooltip.Trigger>
+    	aslkdaldsk
+    </Tooltip.Trigger>
+    ```
+
+    radix ui 에서는 다음과 같이 작성하면
+
+    ```jsx
+    <button>aslkdaldsk</button>
+    ```
+
+    으로 렌더링되고 onMouseEnter, onClick 등과 같은 게 button에 자동으로 추가된다.
+    <br/>
+    <p>근데 뭔가 나는 trigger 라는게 자식 요소에게 직접 걸어준다. 라는 네이밍으로 다가와서 그런지, button 태그가 생성되는 게 어색하게 느껴졌었다.</p>
+    <p>그리고 button > button 요소가 있으면 안 돼서 (nextjs 에서는 쓰지말라고 경고한다.)</p>
+    <p>ui 라이브러리를 활용하거나, 외부 컴포넌트를 불러와서 사용하면 불필요하게 as 로 바꿔주는 등이 있을 것 같아서 불편해보였다.</p>
+    <p>그래서 cloneElement 를 활용해서 자식으로 전달 받은 요소에게 직접 props를 넣는 방법으로 개선해봤는데 아직 테스트를 더 해봐야겠지만, 이게 더 좋은 방법일까 라는 고민을 했었다.</p>
+    <br/>
+    불필요하게 cloneElement 를 실행했으니 느린건 아마 내 방식이 더 느릴 것 같다.
+
+    그럼 빠르기만하면 더 좋은 방법을 제공하는 건지, 아니면 사용성이나 가독성도 고려해야 하는 거 아닌지에 대한 고민이 요새 많았는데 책에서 실패하지만 빠른 코드 라고 표현하는 부분에서 생각이 많았었던 것 같다.
+
+    왜 이 책에서는 Promise 라는 개념을 배제하고 설명하는지..? 궁금해졌었다 🤔
+
+    ### 논의하고 싶은 내용
+
+    <p>p455 에서 공유하는 방법을 현실에서 착안하기</p>
+    <p>라는 내용에서 사람들이 줄을 서는 것에서 Queue 라는 개념이 생겼다. 라는 식으로 설명하고 있는데,</p>
+    <p>현실이나 아니면 다른 곳에서 영감을 받아서 네이밍을 하신 경험이 있으신가요?</p>
+    <br/>
+    예를 들어 저는 flutter 찍먹할 때 `SizedBox` 라는 기본 widget 이 있는데, 여기서 영감을 받아서 react 기본 컴포넌트를 커스텀해서 만들 때 `SizedBox`라는 걸 꼭 만듭니다.
+
+    그리고 좀 다른 케이스이긴한데, react-native에서 반응형 텍스트 크기를 제어하는 라이브러리를 사용한 적이 있었는데 그 때 메소드가 `vw` 였나? 그래서 반응형 퍼블리싱을 손쉽게 만들어주는 방법으로 `pxToRem` 이라는 메소드를 만들었었습니다.
+
+    가로 → 미트볼
+
+    세로 → 케밥
+
+    [[UI 명칭] [Menu UI] 이제 땡땡땡 아이콘 말고 진짜 이름으로 불러주세요.](https://chaeyeon-chaeyeon.tistory.com/67)
+
+    ![케밥 아이콘](https://file.notion.so/f/f/acbe5465-92d7-426a-ab5f-c7e71d7be6e6/35d99c9f-ce29-454d-aed7-99012be7dc74/Untitled.png?id=0b3d7145-2b76-49f0-ae5a-c932b279fe7c&table=block&spaceId=acbe5465-92d7-426a-ab5f-c7e71d7be6e6&expirationTimestamp=1696795200000&signature=lg8o2siRYwR-ZkmDCoXT8evksKQ6LBNcT9m5fRZqaAE&downloadName=Untitled.png)
+</details>
+<details>
+  <summary>**수림**</summary>
+## 좋았던 부분
+
+    <Callout>
+    타이밍 버그가 발생하였을 때, 왜 발생하였고 어떻게 해결해 나가는 지 자료형을 만들어 나가며 해결하는 방법을 보여주어 신기하고 재미있었다.
+
+    개발할 때, 확실히 시간을 다룰 때가 가장 어려운 것 같다. 동시에 비동기 요청이 많이 발생했을 때, 그 흐름을 제어하는 방법 등…
+
+    중간에 “비동기 호출을 사용한다면 출력을 콜백으로 바꿀 수 있다” 부분도 와닿았던 부분이었다. 과제에서 코드 간의 의존성을 줄이는 부분을 신경쓰면서 작업하였는데 이 때, 비동기 호출 뿐만 아니라 서로 결합도가 낮은 코드에서 변경 사항이 발생하고 그 변경 사항을 수신할 때, 책에 나온대로 콜백의 형태로 작업하여 해결한 적이 있어 이 부분이 크게 와닿았다.
+
+    </Callout>
+
+    ### 타임라인 다이어그램은 시간에 따라 어떤 일이 일어나는지 보여준다. (p.395)
+
+    - **타임라인**
+        - 시간에 따른 액션의 순서
+    - **타임라인 다이어그램**
+        - 시간에 따른 액션 순서를 시각적으로 표시한 것
+
+    ### 타임라인 다이어그램 규칙 (p.396)
+
+    - 순서대로 실행되는 액션
+    - 동시에 나란히 실행되는 액션
+
+    ### 두 가지 타임라인 다이어그램 기본 규칙 (p.396)
+
+    - 두 액션이 순서대로 나타나면 같은 타임라인에 넣습니다.
+    - 두 액션이 동시에 실행되거나 순서를 예상할 수 없다면 분리된 타임라인에 넣습니다.
+
+    ### 다이어그램을 그리기 위한 세 단계 (p.404)
+
+    1. 액션을 확인한다.
+    2. 각 액션을 그린다.
+    3. 단순화한다.
+
+    ### 순서대로 실행되는 코드의 두 가지 종류 (p.407)
+
+    - **순서가 섞일 수 있는 코드**
+        - 두 액션 사이에 시간이 얼마나 걸릴 수 알 수 없는 경우, 섞일 수 있다.
+    - **순서가 섞이지 않는 코드**
+        - 두 액션이 차례대로 실행되는 경우, 그 사이에 다른 작업이 끼어들지 못하여 섞이지 않는다.
+        (JS는 싱글 스레드이기 때문에 런타임에서 해줌)
+
+    ### 좋은 타임라인의 원칙 (p.409)
+
+    1. 타임라인은 적을수록 이해하기 쉽다.
+    2. 타임라인은 짧을수록 이해하기 쉽다.
+    3. 공유하는 자원이 적을수록 이해하기 쉽다.
+    4. 자원을 공유한다면 서로 조율해야 한다.
+    5. 시간을 일급으로 다룬다.
+
+    ### 자바스크립트에서 단순화하기 위한 두 단계 (p.425)
+
+    1. 액션을 통합한다.
+    2. 타임라인을 통합한다.
+
+    ### 타임라인을 쉽게 만드는 네 가지 원칙 (p.425)
+
+    1. 적은 타임라인
+    2. 짧은 타임라인
+    3. 적은 공유 자원
+    4. 자원을 공유한다면 조율하기
+
+    ### 비동기 호출을 사용한다면 출력을 콜백으로 바꿀 수 있다. (p.436)
+
+    비동기 호출은 값을 리턴할 수 없기 때문에 콜백 함수로 전달해야 한다.
+
+    ### 동시성 기본형 (p.447)
+
+    자원을 안전하게 공유할 수 있는 재사용 가능한 코드
+
+    ### 타이밍 버그 (p.474)
+
+    - 가끔은 잘 동작하는 버그
+
+    ## 다시 보고 싶은 부분
+
+    ### Queue 코드 (p.459)
+
+    ```jsx
+    const Queue = (worker) => {
+      const tasks = []
+      let working = false
+
+      const runNext = () => {
+        if (working || tasks.length === 0) {
+          return
+        }
+        working = true
+
+        const task = tasks.shift()
+        worker(task.data, (val) => {
+          working = false
+          setTimeout(task.callback, 0, val)
+          runNext()
+        })
+      }
+
+      return (data, callback) => {
+        tasks.push({
+          data: data,
+          callback: callback || () => {}
+        })
+
+        setTimeout(runNext, 0)
+      }
+    }
+    ```
+
+    ### Dropping Queue 코드 (p.466)
+
+    ```jsx
+    const DroppingQueue = (max, worker) => {
+      const tasks = []
+      let working = false
+
+      const runNext = () => {
+        if (working || tasks.length === 0) {
+          return
+        }
+        working = true
+
+        const task = tasks.shift()
+        worker(task.data, (val) => {
+          working = false
+          setTimeout(task.callback, 0, val)
+          runNext()
+        })
+      }
+
+      return (data, callback) => {
+        tasks.push({
+          data: data,
+          callback: callback || () => {}
+        })
+
+        while(task.length > max) {
+          tasks.shift()
+        }
+
+        setTimeout(runNext, 0)
+      }
+    }
+    ```
+
+    ### Cut 코드 (p.488)
+
+    ```jsx
+    const Cut = (timeLineNum, callback) => {
+      let finishedNum = 0
+
+      return () => {
+        finishedNum += 1
+
+        if (finishedNum === timeLineNum) {
+          callback()
+        }
+      }
+    }
+    ```
+
+    ### JustOnce 코드 (p. 501)
+
+    ```jsx
+    const JustOnce = (action) => {
+      let isCalled = false
+
+      return (a,b,c) => {
+        if (isCalled) {
+          return
+        }
+        isCalled = true
+
+        return action(a,b,c)
+      }
+    }
+    ```
+
+    ## 논의하고 싶은 부분
+
+    - P.393, 클릭 속도와 관련 있는 버그 혹은 프로젝트를 진행하면서 간헐적으로 동작하는 버그를 발견하고 디버깅한 경험이 있는지?
+        - Q. 타이밍 버그가 발생했을 때, 주로 어떻게 해결하시나요??
+            - k민수님, p민수님 - 발견된 케이스가 있을 때, 왜 이게 발생했는지 콘솔로 찍어보며 디버깅
+            - 예진님
+                - url에서 query 파싱 이슈…
+            - p민수님
+                - 한국 기획자 (재현 안 됨)
+                - 대만 기획자 (재현 됨)
+                - 수림님 (재현 됨)
+                - 버튼에 disabled 가 있으면 버블링이 안 된다. (chrome 버전 문제)
+
+    - Cut에서 결국 위 코드는 해당 타임라인의 번호를 알아야 한다. 좀 더 개선해볼 수는 없을까?
+</details>
+<details>
+  <summary>**충일**</summary>
+    - 15장
+      - 타임라인 다이어그램은 시간의 흐름에 따라 사건이나 프로세스를 시각화하는 도구로 왜 함수형 코딩에서 이를 언급했을까?
+          - 타임라인 다이어그램을 올바르게 구현하거나 이해하기 위해서는 자바스크립트의 기본 개념에 대한 깊은 이해가 필수적이기 때문
+      - 예를 들어, 비동기 프로그래밍(p. 411)과 이벤트 루프(p. 412)는 자바스크립트의 핵심 개념 중 하나. 이러한 개념은 타임라인에 여러 사건이나 액션을 동시에 나타내거나 서로의 사이에 어떤 의존성이 있는지 시각화할 때 굉장히 중요하게 작용하는데 **타임라인 다이어그램**이 단순한 시각화 도구일 뿐이라면, **자바스크립트를 통해 그것을 동적으로 표현**하고 조작하는 데에는 이러한 **본질적인 지식**이 필수
+    - 16장
+      - ~~*이해 안 되는 부분 (p. 452) “다이어그”라는 번역을 했는데 “다이어그램” 한글자 더 쓰기 싫어보인..*~~
+      - 16장은 결국엔 큐에서 불필요한 동작 로직을 제거했다라고 정리
+    - 17장
+      - ~~좋은 타임 라인의 원칙이 이전 챕터부터 챕터 시작시마다 계속 반복되는데 해당 중복부터 책에서 제거해주면 좋겠다…~~
+      - 타임라인을 통해 각각의 작업이 언제, 어떻게 실행되는지 명확히 파악함으로써 "경쟁 조건"을 미리 인식하고 예방할 수 있음. 따라서 타임라인은 단순한 시각화 도구를 넘어, 복잡한 시스템에서의 안정성과 예측 가능성을 보장하는 핵심 도구로서의 역할을 하는데 결국엔 본질적으로 깊은 지식이 있어야 복잡한 시스템을 시각화 할 수 있다고 이해
+</details>
+<details>
+  <summary>**예진**</summary>
+  ### 좋았던 부분
+    - 프론트엔드 개발하면서 따닥 이슈를 흔하게 마주칠 수 있는데, 그에 대한 해결책으로 큐를 이용한 동시성 기본형 방식을 새롭게 알게 되었다. 따닥 이슈를 해결하는 다른 방법들과 비교해봐도 좋을 것 같다.
+        - API 호출 중일 때, 로딩 컴포넌트 보여주기
+
+        [React Query와 함께 Concurrent UI Pattern을 도입하는 방법 | 카카오페이 기술 블로그](https://tech.kakaopay.com/post/react-query-2/#suspense)
+</details>
+<details>
+  <summary>**민수(박)**</summary>
+  ### 좋았던 부분
+
+    타임라인을 큐로 구현하며 발생할 수 있는 동시성 이슈까지 해결하는 예제를 보면서 시간과 리스트 형태의 자료구조와의 관계를 다시 한 번 관련지어 생각해볼 수 있는 시간이어서 좋았다.
+    그 큐로 동시성 이슈를 해결하는 부분이 Promise를 생각나게 했고 Promise는 또 시간과 밀접한 관계가 있어서 결국 시간과 큐의 관계가 보였다. 큐에 들어가는 작업들이 Promise에 then절로 이어지는 작업들이라고 생각해볼 수 있을텐데, 평소에 Promise의 then절에 들어가는 함수는 특정 작업이 끝났을 때, 즉, 시간과 관련된 작업이라는 느낌이 강했는데 결국 생각해보면 그들도 Promise 내에서 리스트로 관리될거라는 점을 다시 생각해볼 수 있어서 좋았다.
+</details>
+
+# 실습 💻
+
+## 실습 풀이 및 리뷰간 논의하고 싶었던 내용
+
+## 실습 문제 아이디어 스토밍
+
+# Check out 🚪
+
+<details>
+  <summary>**민수(김)**</summary>
+    3시에 적었는데 이번에 스터디 양이 많아서 힘드셨나보다 했는데 7시에 와보니까 다들 잘 적어주셔서 감사하다는 생각 많이 했습니당
+
+    다음주면 스터디가 끝나서 많이 아쉽다. 그만큼 스터디 첫 기획 때 이 날이 올까? 라는 생각을 했는데 감회가 새롭다
+</details>
+<details>
+  <summary>**수림**</summary>
+    너무 슬프다…. 이제 마지막이라니..ㅠ.ㅠ
+
+    민수님이 얼른 다음 스터디 기획해주셔서 다시 이 멤버 모였으면 좋겠다
+</details>
+<details>
+  <summary>**충일**</summary>
+  - 스터디 준비하면서 느낀게 막바지에 도달했구나
+  - 이 스터디는 책의 끝까지 갔구나 → 기분이 조아따
+</details>
+<details>
+  <summary>**예진**</summary>
+    - 만나면 반가운 사람들 ! 최고 !
+</details>
+<details>
+  <summary>**민수(박)**</summary>
+  - 왜 오늘이 마지막인 것처럼…
+</details>
+
+[[8주차] 쏙쏙쑥쑥 스터디 만족도 조사](https://forms.gle/GQ9DqakfuJkEiyB56)
+
+<Callout emoji="🙇‍♂️">
+**필수 응답을 우수 참여자 투표로만 바꿨습니다!**
+
+우수 참여자 투표에도 많은 영향을 주니, 시간 내서 서베이 참가해주시면 너무 감사하겠습니다..!
+</Callout>
