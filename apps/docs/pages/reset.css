@@ -10,3 +10,7 @@ td,
 th {
   text-align: start !important;
 }
+
+article details > summary:before {
+  min-width: 1.2em;
+}

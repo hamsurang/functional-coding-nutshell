@@ -1,0 +1,340 @@
+import { Callout } from 'nextra/components'
+
+# 5회차
+
+[👉 노션에서 자세히 보기](https://www.notion.so/minsooweb/5-3e7c15a40d944e8a9d522fe39fb063f8?pvs=4)
+
+[5️⃣ 5회차 공지사항](https://www.notion.so/minsooweb/5-f0df0f5817b4407ab504355e302a39df?pvs=4)
+
+## Check In 🚪
+
+![무드미터](/mood-meter.jpeg)
+
+[Join /functional-programming's Cuckoo Timer!](https://cuckoo.team/functional-programming)
+
+<details>
+  <summary>**민수(김)**</summary>
+  - 집중하는
+    - DS 패키지 고도화 작업에 시간을 많이 쓰고 있다.
+    - 재밌기도 하지만, 신경써야 할 게 많아서 집중력이 필요하다.
+  - 근심하는
+    - DS랑 본업이랑 같이 하다보니 일이 너무 많다…
+    - 일정을 지킬 수 있을지 걱정된다.
+    - TF-ds (개발자 1, 디자이너 1) / MP-squad
+</details>
+<details>
+  <summary>**수림**</summary>
+  - 지루한
+    - 스터디(not 쏙쏙쑥쑥), 강의
+  - 생각에 잠긴
+    - 스우파 보는 중
+</details>
+<details>
+  <summary>**충일**</summary>
+  - 우려하는
+      - 코딩을 못하고 있어서,,
+  - 나른한
+    - 발표 준비가 끝나서
+
+  세상은 좁고 충일님 발은 넓다
+</details>
+<details>
+  <summary>**예진**</summary>
+  - 유쾌한
+    - FE 팀끼리 맥주파티
+  - 근심하는
+    - 스케쥴 관리 능력…근심…ㅠㅠ 저의…벼락치기 실패…
+</details>
+<details>
+  <summary>**민수(박)**</summary>
+  - 황홀한
+      - Intel → Mac(m2)
+  - 지루한
+    - 강의
+  - 집중하(고 싶)은
+    - 운동…
+</details>
+
+
+# 이론 파트 📝
+
+<Callout emoji="✅">
+Chapter: Ch 10~ Ch 12
+Page: p 233 ~ p 316
+</Callout>
+
+> 좋았던 내용, 또는 논의하고 싶었던 내용을 기반으로
+공유하고 싶은 이론 파트를 정리해보아요!
+>
+
+<details>
+  <summary>**민수(김)**</summary>
+  ## 좋았던 내용
+
+    ### Ch 10 일급 함수 I
+
+    함수를 순수함수로 분리해서 만드는 과정에서, 이런 것도 함수로 만들 필요가 있을까..? 라는 생각이 들었던 게 있었는데, 연산자는 일급 객체가 아니니 함수로 만들어줌으로써 일급 함수로 바꿀 수 있다는 점이 재밌었습니다. p250
+
+    > 이제, 누가 이런 함수를 왜 굳이 만드셨나요, 라고 하면 일급 함수로써 재활용하기 위해서요! 라고 말할 수 있을 것 같아요
+    >
+
+    콜백으로 바꾸기 리펙토링 파트가 재밌었다. p253 ~
+
+    왜 일급 함수로 분리해야 하는지에 대해서 명확하게 이해할 수 있었던 것 같고, 콜백을 인자로 받도록 설계하지 않고 비슷한 함수를 여러번 선언했었던 과거 코드들이 오버랩 되었던 것 같다.
+
+    `리팩터링: 함수 본문을 콜백으로 바꾸기` p259
+
+    어디서 많이 본 패턴인 것 같은데, 생각해보니, react에서 HOC 구조가 이와 똑같아서 재밌었다.
+
+    children 으로 함수를 불러서 렌더링하는 기법이 layout 에서 우리가 이미 하고 있던 방식이라 이렇게 배우니 또 재밌었던 것 같다.
+
+    왜 본문을 함수로 감싸서 넘기나요? p263
+
+    파트에서, 예전에 react에서 onClick을 넣어줄 때
+
+    ```tsx
+    onClick={foo("minsoo")}
+    ```
+
+    이렇게 하면 왜 안 되는지 이해가 안 돼서 질문했었던 적이 있었다.
+
+    고차 함수를 이해했다면, 콜백의 개념을 이해했다면, 함수의 실행을 미룬다는 개념을 좀 더 이해하거나 설명하기 쉬웠을 것 같다.
+
+    ### Ch 11 일급 함수 II
+
+    고차함수를 만들어서 사용했던 적이 있다.
+
+    withLoading 이라는 함수인데, withLoading 에 감싸진 컴포넌트는 인자로 받은 query 문의 결과를 받아서 data를 undefinedable 하지 않게 바로 사용할 수 있고, delay 를 명시해서 그 시간동안은 placeholder를 보여주는 구조다.
+
+    <details>
+      <summary>withLoading</summary>
+      ![궁금해 하시는 분이 있을 수 있을 것 같아,, 가져와봤습니다.](/screenshot/week5-vscode-00.png)
+
+        궁금해 하시는 분이 있을 수 있을 것 같아,, 가져와봤습니다.
+
+    </details>
+
+    이때, withLoading(Foo, queryFn, ‘1s’) 이런 코드를 똑같이 계속 반복해서 사용했던 적은 사실 잘 없지만,
+
+    만약 계속 반복해서 같은 컴포넌트를 불러야 했다면 나도 이 책에서 말한 내용처럼 리팩토링을 고민했을까? 라는 생각이 들었다.
+
+    wrapLoging 이라는 고차 함수를 만들어서 함수를 return 해주는 구조,, 우리가 잘 알고있는 HOC의 사용 방법인 것 같아서 재밌었다.
+
+    ### Ch 12 함수형 반복
+
+    이미 알고 있는 map, filter, reduce 에 대한 설명이라 새로운 사실보다는 직접 구현하는 것과, map과 reduce, filter 라는 내장 메소드가 없었을 때의 개발자 분들의 대화를 엿 볼 수 있는 것 같아서 재밌었다.
+
+    ---
+
+    ## 논의하고 싶은 내용
+
+    이번 장에서는 논의하고 싶은 내용보다는 새로운 사실과 알고 있던 사실을 정리해서 읽은 기분이라
+
+    논의하고 싶었던 내용은 크게 없었던 것 같다.
+
+    ---
+
+    ## 문제로 만들면 좋을 내용
+
+    flatMap 이라는 내장 함수가 있는데, 이를 구현해보자 (실제로 제가 이직 당시 받았던 라이브 코딩 테스트 문제였는데, 이번에 배운 내용 + 재귀로 구현이 가능할 것 같아요!)
+</details>
+<details>
+  <summary>**수림**</summary>
+  ## 좋았던 부분
+
+    ### chapter 10. 일급 함수 1
+
+    <Callout emoji="🙂">
+    지난 스터디 시간들에서 중복에 대한 이야기를 많이 나누었는데 어떤 중복이 좋지 않은 중복인지, 좋지 않은 중복의 코드 스멜의 특징을 알게되어 좋았다.
+
+    최근 바닐라로 과제하면서 테스트하기 좋은 코드에 대해서 고민하고 있었는데 함수 본문을 콜백으로 바꾸기, 암묵적 인자를 드러내기를 활용해서 더 테스트하기 좋은 코드가 된 것 같아 재미있었다.
+    </Callout>
+
+    ### 코드 스멜: 이름에 있는 암묵적 인자
+
+    - **특징**
+        - 거의 똑같이 구현된 함수가 있다.
+        - 함수 이름이 구현에 있는 다른 부분을 가리킨다.
+
+    ### 코드 스멜: 암묵적 인자를 드러내기
+
+    - **특징**
+        - 암묵적 인자가 일급 값이 되도록 함수에 인자를 추가하면 잠재적 중복을 없애고 코드의 목적을 더 잘 표현할 수 있다.
+    - **단계**
+        1. 함수 이름에 있는 암묵적 인자를 확인한다.
+        2. 명시적인 인자를 추가한다.
+        3. 함수 본문에 하드 코딩된 값을 새로운 인자로 바꾼다.
+        4. 함수를 호출하는 곳을 고친다.
+
+    ### 리팩터링. 함수 본문을 콜백으로 바꾸기
+
+    - **특징**
+        - 함수 본문에 비슷한 함수에 있는 서로 다른 부분을 콜백으로 바꾸면 일급 함수로 어떤 함수에 동작을 전달할 수 있다.
+        - 원래 있던 코드를 고차 함수로 만드는 강력한 방법이다.
+    - **단계**
+        1. 함수 본문에서 바꿀 부분의 앞부분과 뒷부분을 확인한다.
+        2. 리팩터링 할 코드를 함수로 빼낸다.
+        3. 빼낸 함수의 인자로 넘길 부분을 또 다른 함수로 빼낸다.
+
+    ### 데이터 지향
+
+    이벤트와 엔티티에 대한 사실을 표현하기 위해 일반 데이터 구조를 사용하는 프로그래밍 형식
+
+    ### 데이터를 데이터 그대로 사용하는 것의 중요한 장점
+
+    - 여러 가지 방법으로 해석할 수 있다는 점
+    - 제한된 API로 정의하면 데이터를 제대로 활용할 수 없다.
+    - 데이터가 미래에 어떤 방법으로 해석될지 미리 알 수 없기 때문에 필요할 때 알맞은 방법으로 해석할 수 있어야 한다.
+
+    ## 논의하고 싶은 부분
+
+    ### chapter 10. 일급 함수 1
+
+    - **필드명을 문자열로 사용?**
+        - 타입스크립트여서 괜찮다
+        - 상수화해서 사용한다
+
+        ```jsx
+        // commit(mutationType, args)
+
+        commit('setState', ...)
+        commit('setCount', ...)
+        ```
+
+    - **체이닝해서 분리하기**
+
+
+        ```jsx
+        const sample = ['1,2,3,4,5']
+
+        // Case.1
+        sample.split(',').map(num => Number(num.trim()))
+
+        // Case.2
+        sample.split(',')
+        			.map(numText => numText.trim())
+        			.map(Number)
+
+        //충일
+        const numbersString = ['1,2,3,4,5'];
+
+        numbersString.split(',')
+          .map(strNum => Number(strNum));
+        ```
+
+    - **타입 검사하기**
+
+        Case 2로 suggestion을 할 때, 어떤 이유로 2를 제안할 것인가?
+
+        ```jsx
+        const number = 1
+
+        // Case 1
+        const isNumber = (num) => Object.prototype.toString.call(num) === '[object Number]'
+
+        // Case 2
+        const isNumber = (num) => typeof num === 'number'
+        ```
+
+        ![console](/screenshot/week5-console-00.png)
+
+        ![console 2](/screenshot/week5-console-01.png)
+
+        -0 ??????????
+
+        -0 === 0  //true
+
+        - 콘솔에서 복사하면 0 === 0 됨
+
+        ![console 3](/screenshot/week5-console-02.png)
+</details>
+<details>
+  <summary>**예진**</summary>
+  - withMapCopy를 만들어서 적용해보았다!
+
+      ```tsx
+      const withMapCopy = (
+        map: ToastState,
+        modifyFunction: (arg: ToastState) => any,
+      ) => {
+        const newMap = new Map(map);
+        modifyFunction(newMap);
+        return newMap;
+      };
+
+      ...
+
+      const [toastMap, setToastMap] = useState<ToastState>(new Map());
+
+      const openToast: ToastContextProps['openToast'] = (id, contents, options) => {
+        if (toastMap.has(id)) {
+          console.error(`Toast with id ${id} already exists`);
+          return;
+        }
+        setToastMap((prev) =>
+          withMapCopy(prev, (newMap) =>
+            newMap.set(id, { ...options, children: contents }),
+          ),
+        );
+      };
+
+      const closeToast: ToastContextProps['closeToast'] = (id) => {
+        setToastMap((prev) => withMapCopy(prev, (newMap) => newMap.delete(id)));
+      };
+      ```
+</details>
+<details>
+  <summary>**민수(박)**</summary>
+  ## 좋았던 부분
+
+    사실 느낌적인 느낌으로 스멜을 맡고 리팩토링을 해오던 다음 과정들을 잘 정립된 개념과 예시로 정리해볼 수 있어서 좋았음
+
+    - 코드 스멜: 이름에 있는 암묵적 인자
+    - 코드 스멜: 암묵적 인자를 드러내기
+    - 리팩토링. 함수 본문을 콜백으로 바꾸기
+
+    ## 논의하고 싶은 부분
+
+    reduce가 사실 만능 리듀서라고 할 정도로 많은 걸 할 수 있는데 다들 어디까지 활용하시는지 얘기 나눠보고 싶습니다.
+
+    책에서도 reduce를 일련의 값들을 합치는 개념 위주로 설명하다가, 갑자기 책 p.313에 reduce()로 할 수 있는 것들 중 시간 여행 디버깅, 회계 감사 추적 등 히스토리를 파악하는데 쓸 수 있다고 설명하고 있어서 약간 혼란스러운 부분이지 않나 싶네요.
+</details>
+
+
+# 실습 💻
+
+## 실습 풀이 및 리뷰간 논의하고 싶었던 내용
+
+## 실습 문제 아이디어 스토밍
+
+- 민수(박)
+  - <p>foldLeft, foldRight를 구현해보기</p>
+    <p>(책 p.313 언어 탐구에서 reduce의 다른 이름이라는 fold를 소개하고 있음)</p>
+- 민수(김)
+    - flatMap 이라는 내장 함수가 있는데, 이를 구현해보자 (실제로 제가 이직 당시 받았던 라이브 코딩 테스트 문제였는데, 이번에 배운 내용 + 재귀로 구현이 가능할 것 같아요!)
+      ```jsx
+      [[1],[2]].flatMap(i => i + 2)
+
+      // ['12', '22'] 왜 문자열이 되지 신기하네
+      ```
+
+
+# Check out 🚪
+
+[[5주차] 쏙쏙쑥쑥 스터디 만족도 조사](https://forms.gle/m7XDRfNVLpc4NXYJ7)
+
+### 👻 CA
+
+**나만의 좋은 습관**
+
+- **k민수**
+    - 새로운거 알게되면 공유하기
+    - 가르치듯이 설명해주기
+- **예진**
+    - 일단 말을 꺼내기 (Ex. 이렇게 해볼까요?)
+- **수림**
+    - 영어로 일기 쓰기 (오늘은 꼭 써야지…)
+    - 월마다 회고하기
+    - 에러 디버깅이나 새롭게 깨닫게된거 적어두기
+- **충일**
+    - 한줄 한줄 의미있는 코드 작성하기
