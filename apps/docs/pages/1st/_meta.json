@@ -1,0 +1,28 @@
+{
+  "index": "Members",
+
+  "--- Weeks": {
+    "type": "separator"
+  },
+
+  "weeks": {
+    "title": "회차별 스터디"
+  },
+
+  "-- More": {
+    "type": "separator",
+    "title": "More"
+  },
+
+  "about-link": {
+    "title": "Go to Notion ↗",
+    "href": "https://minsooweb.notion.site/a6f94677860c462399db96f34e121c70?pvs=4",
+    "newWindow": true
+  },
+
+  "organization-link": {
+    "title": "함수랑 산악회 ↗",
+    "href": "https://github.com/function-and-mountain",
+    "newWindow": true
+  }
+}

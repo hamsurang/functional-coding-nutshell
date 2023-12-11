@@ -1,28 +1,38 @@
 {
-  "index": "README",
-  "members": "Members",
-
-  "-- Seperator": {
-    "type": "separator",
-    "title": ""
+  "index": {
+    "type": "page",
+    "display": "hidden",
+    "theme": {
+      "layout": "full"
+    }
   },
 
-  "weeks": "",
-
-  "-- More": {
-    "type": "separator",
-    "title": "More"
+  "1st": {
+    "display": "hidden",
+    "title": "1기",
+    "type": "page"
+  },
+  "2nd": {
+    "display": "hidden",
+    "title": "2기",
+    "type": "page"
   },
 
-  "about-link": {
-    "title": "Go to Notion ↗",
-    "href": "https://minsooweb.notion.site/a6f94677860c462399db96f34e121c70?pvs=4",
-    "newWindow": true
-  },
-
-  "organization-link": {
-    "title": "함수랑 산악회 ↗",
-    "href": "https://github.com/function-and-mountain",
-    "newWindow": true
+  "versions": {
+    "type": "menu",
+    "title": "기수별 보기",
+    "theme": {
+      "collapsed": true
+    },
+    "items": {
+      "2nd": {
+        "title": "2기 (진행중)",
+        "href": "/2nd"
+      },
+      "1st": {
+        "title": "1기",
+        "href": "/1st"
+      }
+    }
   }
 }
