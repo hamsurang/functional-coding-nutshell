@@ -3,17 +3,6 @@ import OgImage from './public/og.png'
 /** @type {import('nextra-theme-docs').DocsThemeConfig} */
 export default {
   logo: <span>쏙쏙쑥쑥</span>,
-  banner: {
-    key: '2기모집',
-    text: (
-      <a
-        href="https://minsooweb.notion.site/2-070c5e9d9ed342449bb94e6bbb7b1a2e?pvs=4"
-        target="_blank"
-      >
-        🚀 쏙쏙쑥쑥 2기를 모집하고 있습니다. 신청하기!! →
-      </a>
-    ),
-  },
   project: {
     link: 'https://github.com/function-and-mountain/functional-coding-nutshell',
   },
