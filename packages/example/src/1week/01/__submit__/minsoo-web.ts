@@ -1,5 +1,3 @@
-const x = 2
-
-export function lineFunction() {
-  return 2 * x + 3
+export function lineFunction(arg: number) {
+  return 2 * arg + 3
 }
