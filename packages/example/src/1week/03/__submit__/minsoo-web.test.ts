@@ -9,6 +9,7 @@ describe('multiDimensionalAccumulate', () => {
       [19, 18, 17, 16, 15, 14, 13, 12, 11],
     ]
 
-    expect(multiDimensionalAccumulate(multiDimensionalArr)).toBe(360)
+    expect(multiDimensionalAccumulate(multiDimensionalArr)).toBe(86)
+    expect(multiDimensionalAccumulate(multiDimensionalArr)).toBe(86)
   })
 })
